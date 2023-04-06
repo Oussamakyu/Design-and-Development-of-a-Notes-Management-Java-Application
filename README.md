@@ -1,0 +1,2 @@
+# Conception-et-D-veloppement-d-une-Application-Java-de-Gestion-des-Notes
+Les fonctionnalités de cette application visent à répondre aux besoins fonctionnels des intervenants dans la gestion des notes au niveau administratif et pédagogique. Cette application a pour objectif de faciliter la saisie des notes, le calcul des moyennes et la gestion des délibérations en respectant les cahiers des charges de chaque filière.
