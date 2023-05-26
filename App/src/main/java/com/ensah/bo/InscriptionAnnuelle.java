@@ -1,0 +1,140 @@
+package com.ensah.core.bo;
+
+import java.util.Set;
+
+/**
+ * Represente une inscription annuelle.
+ * 
+ * Une inscription annuelle est composée de plusieurs inscriptions dans les
+ * matières
+ * 
+ * @author T. BOUDAA
+ *
+ */
+
+public class InscriptionAnnuelle {
+
+	private Long idInscription;
+
+	private int annee;
+
+	private int etat;
+
+	private String type;
+
+	private int rang;
+
+	private String validation;
+
+	private String mention;
+
+	private String plusInfos;
+
+	/**Permet de stocker les notes des matières*/
+	private Set<InscriptionMatiere> inscriptionMatieres;
+
+	
+	/**Permet de stocker les notes des matières*/
+	private Set<InscriptionModule> inscriptionModules;
+
+	private Niveau niveau;
+
+	private Etudiant etudiant;
+
+	public Long getIdInscription() {
+		return idInscription;
+	}
+
+	public void setIdInscription(Long idInscription) {
+		this.idInscription = idInscription;
+	}
+
+	public int getAnnee() {
+		return annee;
+	}
+
+	public void setAnnee(int annee) {
+		this.annee = annee;
+	}
+
+	public int getEtat() {
+		return etat;
+	}
+
+	public void setEtat(int etat) {
+		this.etat = etat;
+	}
+
+	public Niveau getNiveau() {
+		return niveau;
+	}
+
+	public void setNiveau(Niveau niveau) {
+		this.niveau = niveau;
+	}
+
+	public Etudiant getEtudiant() {
+		return etudiant;
+	}
+
+	public void setEtudiant(Etudiant etudiant) {
+		this.etudiant = etudiant;
+	}
+
+	public Set<InscriptionMatiere> getInscriptionMatieres() {
+		return inscriptionMatieres;
+	}
+
+	public void setInscriptionMatieres(Set<InscriptionMatiere> inscriptionMatieres) {
+		this.inscriptionMatieres = inscriptionMatieres;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Set<InscriptionModule> getInscriptionModules() {
+		return inscriptionModules;
+	}
+
+	public void setInscriptionModules(Set<InscriptionModule> inscriptionModules) {
+		this.inscriptionModules = inscriptionModules;
+	}
+
+	public int getRang() {
+		return rang;
+	}
+
+	public void setRang(int rang) {
+		this.rang = rang;
+	}
+
+	public String getValidation() {
+		return validation;
+	}
+
+	public void setValidation(String validation) {
+		this.validation = validation;
+	}
+
+	public String getMention() {
+		return mention;
+	}
+
+	public void setMention(String mention) {
+		this.mention = mention;
+	}
+
+	public String getPlusInfos() {
+		return plusInfos;
+	}
+
+	public void setPlusInfos(String plusInfos) {
+		this.plusInfos = plusInfos;
+	}
+
+}
