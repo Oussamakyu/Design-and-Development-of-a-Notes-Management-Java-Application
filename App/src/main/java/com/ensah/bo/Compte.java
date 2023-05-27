@@ -1,4 +1,4 @@
-package com.ensah.core.bo;
+package com.ensah.bo;
 
 
 

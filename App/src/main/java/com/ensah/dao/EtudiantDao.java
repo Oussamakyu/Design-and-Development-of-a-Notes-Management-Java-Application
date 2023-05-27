@@ -1,6 +1,6 @@
 package com.ensah.dao;
+import com.ensah.bo.*;
 
-import com.ensah.bo.Etudiant;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
