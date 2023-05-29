@@ -14,6 +14,7 @@ public class Main {
         try {
             //On vérifie que la base de données n'est pas encore crée
             if (!DBInstaller.checkIfAlreadyInstalled()) {
+                //DBInstaller.installDataBase();
                 //Créer la base de données
                 DBInstaller.createDataBaseTables();
                 LOGGER.info("La base de données est crée correctement");
