@@ -10,7 +10,7 @@ public class DataBaseException extends Exception{
 
     public DataBaseException(Throwable ex){
         super(ex);
-        JOptionPane.showMessageDialog(null, "Please enter a value for Nom, Prénom, and Téléphone 1");
+        JOptionPane.showMessageDialog(null,  "chi l3ba ghalta am3lm");
 
     }
 }

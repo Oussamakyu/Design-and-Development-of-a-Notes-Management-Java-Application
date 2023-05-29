@@ -1,0 +1,26 @@
+2023-05-29 14:11:10,598 ERROR [DBConnection] java.lang.NullPointerException
+2023-05-29 14:11:16,700 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.lang.NullPointerException
+2023-05-29 14:19:01,538 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:19:06,848 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:20:57,538 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:21:06,904 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:22:08,515 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:22:10,455 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:23:26,044 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=6) Unknown database 'tatabase'
+2023-05-29 14:23:28,195 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=6) Unknown database 'tatabase'
+2023-05-29 14:37:53,486 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=22) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:37:57,252 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=22) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:38:22,125 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=31) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:38:24,525 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=31) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:40:02,031 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=32) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:40:04,638 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=32) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:44:04,338 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=33) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:44:20,870 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=33) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'

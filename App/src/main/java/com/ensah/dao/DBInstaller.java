@@ -23,7 +23,7 @@ public class DBInstaller {
         try (Connection connection = DriverManager.getConnection(url, username, password);
              Statement statement = connection.createStatement()) {
 
-            String sql = "CREATE DATABASE " + databaseName;
+            String sql = "CREATE DATABASE IF NOT EXISTS " + databaseName;
             statement.executeUpdate(sql);
             System.out.println("Database created successfully");
             return true;
@@ -32,6 +32,7 @@ public class DBInstaller {
             return false;
         }
     }
+
 
     public static void createDataBaseTables() throws DataBaseException {
 
@@ -560,7 +561,7 @@ public class DBInstaller {
         String password = dbProperties.getProperty("db.password");
         String databaseName = dbProperties.getProperty("db.name");
 
-        String databaseFile = userHomeDirectory + "\\" + databaseName + ".mv.db";
+        String databaseFile = userHomeDirectory + "/" + databaseName + ".frm";
         System.out.println(databaseName);
 
         // Check if the database file exists
@@ -570,7 +571,7 @@ public class DBInstaller {
         }
 
         // Check if the tables are created
-        try (Connection connection = DriverManager.getConnection(url + databaseName, username, password);
+        try (Connection connection = DriverManager.getConnection(url, username, password);
              Statement statement = connection.createStatement()) {
 
             // Check if the table exists
@@ -590,6 +591,7 @@ public class DBInstaller {
             return false;
         }
     }
+
 
     //
 
