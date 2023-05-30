@@ -273,6 +273,12 @@ public class DBInstaller {
                                                              `nomRole` varchar(255) DEFAULT NULL
                                                            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                                                            
+                                                           CREATE TABLE `Ratt` (
+                                                             `idNiveau` bigint(20) NOT NULL,
+                                                             `idEtudiant` bigint(20) NOT NULL,
+                                                             `idModule` bigint(20) NOT NULL
+                                                           ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                                                           
                                                            --
                                                            -- Déchargement des données de la table `role`
                                                            --
@@ -531,6 +537,7 @@ public class DBInstaller {
                                                            --
                                                            -- Contraintes pour la table `niveau`
                                                            --
+                                                          
                                                            ALTER TABLE `niveau`
                                                              ADD CONSTRAINT `FK9qvkxk4ayqkjopclmlgoel8d9` FOREIGN KEY (`idFiliere`) REFERENCES `filiere` (`idFiliere`);
                                                            COMMIT;
