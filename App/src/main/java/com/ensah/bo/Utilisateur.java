@@ -1,6 +1,6 @@
 package com.ensah.bo;
 
-import java.util.*;
+import java.util.Set;
 
 
 public class Utilisateur {
@@ -24,6 +24,22 @@ public class Utilisateur {
 	private String photo;
 
 	private Set<Compte> comptes;
+
+	public Utilisateur(Long idUtilisateur, String cin, String email, String nom, String nomArabe, String photo, String prenom, String prenomArabe, String telephone) {
+		this.idUtilisateur = idUtilisateur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.email = email;
+		this.telephone = telephone;
+		this.nomArabe = nomArabe;
+		this.prenomArabe = prenomArabe;
+		this.photo = photo;
+	}
+
+	public Utilisateur() {
+
+	}
 
 	public Long getIdUtilisateur() {
 		return idUtilisateur;

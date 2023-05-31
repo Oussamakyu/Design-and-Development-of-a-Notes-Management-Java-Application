@@ -1,7 +1,8 @@
 package com.ensah.bo;
 
 
-import java.util.*;
+import java.sql.Date;
+import java.util.List;
 
 
 /**
@@ -22,6 +23,15 @@ public class Etudiant extends Utilisateur {
 
 	private List<InscriptionAnnuelle> inscriptions;
 
+	public Etudiant() {
+		super();
+	}
+
+
+	public Etudiant(Long idUtilisateur, String cin, String email, String nom, String nomArabe, String photo, String prenom, String prenomArabe, String telephone) {
+		super(idUtilisateur, cin, email, nom, nomArabe, photo, prenom, prenomArabe, telephone);
+	}
+
 
 	public String getCne() {
 		return cne;
@@ -35,7 +45,7 @@ public class Etudiant extends Utilisateur {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(java.util.Date dateNaissance) {
+	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 

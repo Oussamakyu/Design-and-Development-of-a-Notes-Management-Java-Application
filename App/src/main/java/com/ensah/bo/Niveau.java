@@ -1,6 +1,6 @@
 package com.ensah.bo;
 
-import java.util.*;
+import java.util.List;
 
 
 public class Niveau {
@@ -12,11 +12,21 @@ public class Niveau {
 
 	private String titre;
 
-	private List<Module> modules;
+	private List<java.lang.Module> modules;
 
 	private List<InscriptionAnnuelle> inscriptions;
 
 	private Filiere filiere;
+
+	public Niveau(Long idNiveau) {
+		this.idNiveau = idNiveau;
+	}
+
+	public Niveau(Long idNiveau, String alias, String titre) {
+		this.idNiveau = idNiveau;
+		this.alias = alias;
+		this.titre = titre;
+	}
 
 	public Long getIdNiveau() {
 		return idNiveau;
@@ -42,11 +52,11 @@ public class Niveau {
 		this.titre = titre;
 	}
 
-	public List<Module> getModules() {
+	public List<java.lang.Module> getModules() {
 		return modules;
 	}
 
-	public void setModules(List<Module> modules) {
+	public void setModules(List<java.lang.Module> modules) {
 		this.modules = modules;
 	}
 

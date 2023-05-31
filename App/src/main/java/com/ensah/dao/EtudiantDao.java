@@ -7,8 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.Normalizer;
-import java.util.Date;
-import java.util.List;
+
 
 
 import org.apache.log4j.Logger;
@@ -27,33 +26,38 @@ public class EtudiantDao {
 
         return converted;
     }
+    public Etudiant findById(long pIdEtudiant) throws DataBaseException {
+        Etudiant etudiant = null;
+        try {
+            Connection c = DBConnection.getInstance();
+            PreparedStatement idstm = c.prepareStatement("SELECT * FROM etudiant WHERE idEtudiant=?");
+            idstm.setLong(1, pIdEtudiant);
+            ResultSet rs = idstm.executeQuery();
+            if (rs.next()) {
+                etudiant = new Etudiant();
+                etudiant.setIdUtilisateur(rs.getLong("idEtudiant"));
+                etudiant.setCne(rs.getString("cne"));
+                etudiant.setDateNaissance(rs.getDate("dateNaissance"));
+            }
 
-    public void inscrire(Etudiant e, Niveau n) throws DataBaseException {
-        Connection con = DBConnection.getInstance();
+        } catch (SQLException ex) {
+            logger.error(ex);
+            throw new DataBaseException(ex);
+        }
+        return etudiant;
+    }
 
-        String sqlInsertEtudiant = "INSERT INTO Etudiant (cne, dateNaissance, idEtudiant) VALUES (?, ?, ?);";
-        String sqlInsertUtilisateur = "INSERT INTO Utilisateur (idUtilisateur, cin, email, nom, nomArabe, photo, prenom, prenomArabe, telephone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-
-        try (PreparedStatement stmEtudiant = con.prepareStatement(sqlInsertEtudiant);
-             PreparedStatement stmUtilisateur = con.prepareStatement(sqlInsertUtilisateur)) {
+    public void inscrire(Etudiant e) throws DataBaseException {
+        try {
+            Connection con = DBConnection.getInstance();
+            String sqlInsertEtudiant = "INSERT INTO Etudiant (cne, dateNaissance, idEtudiant) VALUES (?, ?, ?);";
+            PreparedStatement stmEtudiant = con.prepareStatement(sqlInsertEtudiant);
 
             // Insert statement for Etudiant table
             stmEtudiant.setString(1, e.getCne());
-            stmEtudiant.setDate(2, new java.sql.Date(e.getDateNaissance().getTime()));
+            stmEtudiant.setDate(2, e.getDateNaissance());
             stmEtudiant.setLong(3, e.getIdUtilisateur());
             stmEtudiant.executeUpdate();
-
-            // Insert statement for Utilisateur table
-            stmUtilisateur.setLong(1, e.getIdUtilisateur());
-            stmUtilisateur.setString(2, e.getCin());
-            stmUtilisateur.setString(3, e.getEmail());
-            stmUtilisateur.setString(4, e.getNom());
-            stmUtilisateur.setString(5, convertToArabicName(e.getNom()));
-            stmUtilisateur.setString(6, null);
-            stmUtilisateur.setString(7, e.getPrenom());
-            stmUtilisateur.setString(8, convertToArabicName(e.getPrenom()));
-            stmUtilisateur.setString(9, e.getTelephone());
-            stmUtilisateur.executeUpdate();
 
 
             logger.info("l'inscription de l'étudiant  " + e.getNom() + " a été effectué avec succès ");
@@ -110,6 +114,28 @@ public class EtudiantDao {
             throw new DataBaseException(ex);
         }
         return exist;
+
+    }
+
+    public void mofidy(Etudiant pEtudiant) throws DataBaseException{
+        try {
+            Connection con = DBConnection.getInstance();
+            String sqlInsertEtudiant = "UPDATE Etudiant SET cne=?, dateNaissance=? WHERE idEtudiant=?;";
+            PreparedStatement stmEtudiant = con.prepareStatement(sqlInsertEtudiant);
+
+            // Insert statement for Etudiant table
+            stmEtudiant.setString(1, pEtudiant.getCne());
+            stmEtudiant.setDate(2, pEtudiant.getDateNaissance());
+            stmEtudiant.setLong(3, pEtudiant.getIdUtilisateur());
+            stmEtudiant.executeUpdate();
+
+
+            logger.info("l'inscription de l'étudiant  " + pEtudiant.getNom() + " a été effectué avec succès ");
+
+        } catch (SQLException ex) {
+            logger.error("Erreur de ", ex);
+            throw new DataBaseException(ex);
+        }
 
     }
 

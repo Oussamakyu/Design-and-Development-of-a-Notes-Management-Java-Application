@@ -1,6 +1,6 @@
 package com.ensah.bo;
 
-import java.util.*;
+import java.util.List;
 
 
 public class Module {
@@ -57,6 +57,14 @@ public class Module {
 		this.elements = elements;
 	}
 
-
-
+	@Override
+	public String toString() {
+		return "Module{" +
+				"idModule=" + idModule +
+				", titre='" + titre + '\'' +
+				", code='" + code + '\'' +
+				", elements=" + elements +
+				", niveau=" + niveau +
+				'}';
+	}
 }
