@@ -17,11 +17,7 @@ public class CadreAdministrateur extends Utilisateur {
 		super(idUtilisateur, cin, email, nom, nomArabe, photo, prenom, prenomArabe, telephone);
 	}
 
-    public CadreAdministrateur() {
-
-    }
-
-    public String getGrade() {
+	public String getGrade() {
 		return grade;
 	}
 

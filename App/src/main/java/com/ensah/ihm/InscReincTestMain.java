@@ -21,7 +21,7 @@ public class InscReincTestMain {
         }
 
         // Test De la fonction importation des données des etudiant (inscription/reinscription)
-        String Path = "C:\\Users\\asus\\Desktop\\Java\\Project\\Design-and-Development-of-a-Notes-Management-Java-Application\\App\\database\\nouveauEtudiant.xlsx";
+        String Path = "C:\\Users\\Housni Achbouq\\Desktop\\Design-and-Development-of-a-Notes-Management-Java-Application\\App\\database\\nouveauEtudiant.xlsx";
         ExcelImport excelImport = new ExcelImport(Path);
 
         // SHOW EXCEL DATA
