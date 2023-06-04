@@ -109,11 +109,11 @@ public class InscriptionAnnuelleDao {
     }
 
 
-    public boolean validationModule(Etudiant e,long moy) throws DataBaseException {
+    public boolean validationModule(long idEtudiant,long moy) throws DataBaseException {
         Connection con = DBConnection.getInstance();
         String sql = " Select idNiveau from InscriptionAnnuelle where idEtudiant = ?;";
         try(PreparedStatement stm = con.prepareStatement(sql)){
-            stm.setLong(1,e.getIdUtilisateur());
+            stm.setLong(1,idEtudiant);
             long x = stm.executeUpdate();
             if(x == 1 || x== 2){
                 if(moy>=10)
@@ -129,6 +129,49 @@ public class InscriptionAnnuelleDao {
             throw new DataBaseException(ex);
         }
     }
+
+    public void notesFinalesDelib(long idEtudiant, String aliasClass, int rang, String mention, String validation) throws DataBaseException, SQLException {
+        Connection con = DBConnection.getInstance();
+        String sql;
+        String query = "SELECT idNiveau FROM Niveau WHERE alias = ?;";
+
+        try (PreparedStatement stmEtu = con.prepareStatement(query)) {
+            stmEtu.setString(1, aliasClass);
+            ResultSet rs = stmEtu.executeQuery();
+            long idNiveau = 0;
+            if (rs.next()) {
+                idNiveau = rs.getLong("idNiveau");
+            }
+
+            if (validation.equals("Aj")) {
+                sql = "UPDATE InscriptionAnnuelle SET rang = ?, validation = ? WHERE idEtudiant = ? AND idNiveau = ?;";
+                PreparedStatement stm = con.prepareStatement(sql);
+                stm.setInt(1, rang);
+                stm.setString(2, validation);
+                stm.setLong(3, idEtudiant);
+                stm.setLong(4, idNiveau);
+                stm.executeUpdate();
+            } else {
+                sql = "UPDATE InscriptionAnnuelle SET mention = ?, rang = ?, validation = ? WHERE idEtudiant = ? AND idNiveau = ?;";
+                PreparedStatement stm = con.prepareStatement(sql);
+                stm.setString(1, mention);
+                stm.setInt(2, rang);
+                stm.setString(3, validation);
+                stm.setLong(4, idEtudiant);
+                stm.setLong(5, idNiveau);
+                stm.executeUpdate();
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new DataBaseException(e);
+        }
+    }
+
+
+
+
+
+
 
 
 

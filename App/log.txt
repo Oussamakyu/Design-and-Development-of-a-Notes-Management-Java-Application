@@ -74,3 +74,11 @@ Current charset is UTF-8. If password has been set using other charset, consider
 2023-06-02 18:09:32,705 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=825) Could not set parameter at position 1 (values was 'CP1')
 Query - conn:825(M)  - "SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.idNiveau=n.idNiveau AND n.alias='CP1' AND i.annee=(SELECT max(annee) FROM inscriptionannuelle);"
 2023-06-02 18:48:07,699 ERROR [InscriptionModuleDao] java.sql.SQLTransientConnectionException: (conn=1073) Parameter at position 2 is not set
+2023-06-04 09:18:59,671 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-06-04 10:58:28,117 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=84) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where idEtudiant=100 and idNiveau=1' at line 1
+2023-06-04 11:02:15,111  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-04 11:02:15,113  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-04 11:02:15,174  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-04 11:02:15,174  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-04 11:02:15,215  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-04 11:02:15,216  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données

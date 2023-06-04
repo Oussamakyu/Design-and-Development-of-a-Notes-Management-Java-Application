@@ -55,4 +55,6 @@ public class InscriptionModuleDao {
         return inscriptionModule;
     }
 
+
+
 }
