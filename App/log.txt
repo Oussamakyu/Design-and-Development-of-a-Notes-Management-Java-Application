@@ -82,3 +82,4 @@ Query - conn:825(M)  - "SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.
 2023-06-04 11:02:15,174  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
 2023-06-04 11:02:15,215  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
 2023-06-04 11:02:15,216  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-04 13:20:26,889 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=147) Table 'mydb.admin' doesn't exist
