@@ -17,70 +17,7 @@ import java.util.List;
 public class CadreAdministrateurDao {
     private Logger logger = Logger.getLogger(InscriptionAnnuelleDao.class);
 
-    public void saveCadreAdministrateur(CadreAdministrateur cadreAdministrateur) {
-        Connection connection = null;
-        PreparedStatement statement = null;
 
-        try {
-            // Get a database connection
-            connection = DBConnection.getInstance();
-
-            // Create the SQL query
-            String query = "INSERT INTO cadreadministrateur (idCadreAdmin, name, email) VALUES (?, ?, ?)";
-
-            // Create a prepared statement
-            statement = connection.prepareStatement(query);
-
-            // Set the parameter values
-            statement.setLong(1, cadreAdministrateur.getIdUtilisateur());
-            statement.setString(2, cadreAdministrateur.getNom());
-            statement.setString(3, cadreAdministrateur.getEmail());
-
-            // Execute the query
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (DataBaseException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public CadreAdministrateur getCadreAdministrateurById(long idCadreAdmin) {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        CadreAdministrateur cadreAdministrateur = null;
-
-        try {
-            // Get a database connection
-            connection = DBConnection.getInstance();
-
-            // Create the SQL query
-            String query = "SELECT * FROM cadreadministrateur WHERE idCadreAdmin = ?";
-
-            // Create a prepared statement
-            statement = connection.prepareStatement(query);
-
-            // Set the parameter value
-            statement.setLong(1, idCadreAdmin);
-
-            // Execute the query
-            resultSet = statement.executeQuery();
-
-            // Retrieve the data from the result set
-            if (resultSet.next()) {
-                cadreAdministrateur = new CadreAdministrateur();
-                cadreAdministrateur.setIdUtilisateur(resultSet.getLong("idCadreAdmin"));
-                cadreAdministrateur.setNom(resultSet.getString("name"));
-                cadreAdministrateur.setEmail(resultSet.getString("email"));
-                // Set other attributes as needed
-            }
-        } catch (SQLException | DataBaseException e) {
-            e.printStackTrace();
-        }
-
-        return cadreAdministrateur;
-    }
 
     public List<CadreAdministrateur> getAllCadreAdministrateurs() {
         Connection connection = null;
@@ -125,33 +62,7 @@ public class CadreAdministrateurDao {
         // Implementation to delete the cadreAdministrateur object from the database
     }
 
-    public void saveCompte(Compte compte) {
-        Connection connection = null;
-        PreparedStatement statement = null;
 
-        try {
-            // Get a database connection
-            connection = DBConnection.getInstance();
-
-            // Create the SQL query
-            String query = "INSERT INTO compte (idAdministrateur, login, password) VALUES (?, ?, ?)";
-
-            // Create a prepared statement
-            statement = connection.prepareStatement(query);
-
-            // Set the parameter values
-            statement.setLong(1, compte.getIdCompte());
-            statement.setString(2, compte.getLogin());
-            statement.setString(3, compte.getPassword());
-
-            // Execute the query
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (DataBaseException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public Compte getCompteByLogin(String login) {
         Connection connection = null;
@@ -195,12 +106,12 @@ public class CadreAdministrateurDao {
         long adminId = -1; // Default value if admin ID is not found
 
         Connection connection = DBConnection.getInstance(); // Implement your own method to get a database connection
-        String query = "SELECT idAdmin FROM admin WHERE email = ?";
+        String query = "SELECT idCompte FROM compte WHERE login = ?";
         try (PreparedStatement statement = connection.prepareStatement(query);) {
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                adminId = resultSet.getLong("idAdmin");
+                adminId = resultSet.getLong("idCompte");
             }
         } catch (SQLException ex) {
             logger.error(ex);

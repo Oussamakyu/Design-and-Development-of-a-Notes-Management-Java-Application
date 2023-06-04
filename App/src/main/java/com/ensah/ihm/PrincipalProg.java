@@ -70,7 +70,7 @@ public class PrincipalProg {
             AdminsManager admMan = new AdminsManager();
             connect = admMan.connectAdmin(login, password);
             if(connect)
-                System.out.println("Welcome mr "+ cadreAdministrateurDao.getCadreAdministrateurById(cadreAdministrateurDao.getAdminIdByEmail(login)).getNom());
+                System.out.println("Welcome mr l'admin " ); // to retrieve name later
         }
 
         while (connect) {
@@ -145,7 +145,11 @@ public class PrincipalProg {
                     e.printStackTrace();
                 }
             case 3 :
-                
+                System.out.println("hey");
+            case 0 :
+                System.out.println("Bye!");
+                System.exit(0);
+
 
         }
 
