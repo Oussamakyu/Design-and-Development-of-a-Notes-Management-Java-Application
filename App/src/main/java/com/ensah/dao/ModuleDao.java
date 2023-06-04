@@ -34,4 +34,28 @@ public class ModuleDao {
 
         return modulesId;
     }
+
+    public List<Element> getElementsByName(String pModuleName) throws DataBaseException{
+        List<Element> modulesId = new ArrayList<>();
+        try {
+            Connection c = DBConnection.getInstance();
+            PreparedStatement idstm = c.prepareStatement("SELECT idMatiere,currentCoefficient,e.nom FROM element e,module m WHERE e.idModule=m.idModule AND m.titre=?");
+            idstm.setString(1, pModuleName);
+            ResultSet rs = idstm.executeQuery();
+            while (rs.next()) {
+                Element element=new Element();
+                element.setIdMatiere(rs.getLong("idMatiere"));
+                element.setCurrentCoefficient(rs.getLong("currentCoefficient"));
+                element.setNom(rs.getString("nom"));
+                modulesId.add(element);
+            }
+
+        } catch (SQLException ex) {
+            logger.error(ex);
+            throw new DataBaseException(ex);
+        }
+
+        return modulesId;
+    }
+    
 }

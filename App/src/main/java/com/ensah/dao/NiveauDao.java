@@ -1,5 +1,6 @@
 package com.ensah.dao;
 
+import com.ensah.bo.Etudiant;
 import org.apache.log4j.Logger;
 import com.ensah.bo.Module;
 import com.ensah.bo.Niveau;
@@ -69,6 +70,48 @@ public class NiveauDao {
         }
 
         return modulesId;
+    }
+    public List<Module> getModulesByAlias(String pNiveauAlias) throws DataBaseException {
+        List<Module> modulesTitre = new ArrayList<>();
+        try {
+            Connection c = DBConnection.getInstance();
+            PreparedStatement idstm = c.prepareStatement("SELECT m.titre FROM module m,niveau n WHERE n.idNiveau=m.idNiveau AND n.alias=?");
+            idstm.setString(1, pNiveauAlias);
+            ResultSet rs = idstm.executeQuery();
+            while (rs.next()) {
+                Module module = new Module();
+                module.setTitre(rs.getString("titre"));
+                modulesTitre.add(module);
+            }
+
+        } catch (SQLException ex) {
+            logger.error(ex);
+            throw new DataBaseException(ex);
+        }
+        return modulesTitre;
+    }
+
+    public List<Etudiant> getStudentsByAlias(String pNiveauAlias) throws DataBaseException {
+        List<Etudiant> studentsInfos = new ArrayList<>();
+        try {
+            Connection c = DBConnection.getInstance();
+            PreparedStatement idstm = c.prepareStatement("SELECT i.idEtudiant,e.cne,u.nom,u.prenom,i.idInscription FROM inscriptionannuelle i,etudiant e,utilisateur u,niveau n WHERE i.idEtudiant=e.idEtudiant AND e.idEtudiant=u.idUtilisateur AND n.idNiveau=i.idNiveau AND n.alias=? AND i.annee=(SELECT max(annee) FROM inscriptionannuelle);");
+            idstm.setString(1, pNiveauAlias);
+            ResultSet rs = idstm.executeQuery();
+            while (rs.next()) {
+                Etudiant etudiant = new Etudiant();
+                etudiant.setIdUtilisateur(rs.getLong("i.idEtudiant"));
+                etudiant.setCne(rs.getString("e.cne"));
+                etudiant.setNom(rs.getString("u.nom"));
+                etudiant.setPrenom(rs.getString("u.prenom"));
+                studentsInfos.add(etudiant);
+            }
+
+        } catch (SQLException ex) {
+            logger.error(ex);
+            throw new DataBaseException(ex);
+        }
+        return studentsInfos;
     }
 
 }

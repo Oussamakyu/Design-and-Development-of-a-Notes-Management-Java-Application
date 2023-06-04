@@ -92,12 +92,12 @@ CREATE TABLE `element` (
 --
 
 INSERT INTO `element` (`idMatiere`, `code`, `currentCoefficient`, `nom`, `idModule`) VALUES
-(17, NULL, 1, 'Electrostatique', 7),
-(18, NULL, 1, 'Magnétostatique', 7),
-(19, NULL, 1, 'Atomistique', 10),
-(20, NULL, 1, 'Liaisons chimiques', 10),
-(21, NULL, 1, 'TEC Français', 12),
-(22, NULL, 1, 'TEC Anglais', 12),
+(17, NULL, 1, 'Electrostatique', 6),
+(18, NULL, 1, 'Magnétostatique', 6),
+(19, NULL, 1, 'Atomistique', 9),
+(20, NULL, 1, 'Liaisons chimiques', 9),
+(21, NULL, 1, 'TEC Français', 4),
+(22, NULL, 1, 'TEC Anglais', 4),
 (23, NULL, 1, 'TEC Français', 16),
 (24, NULL, 1, 'TEC Anglais', 16),
 (25, NULL, 1, 'Electrocinétique', 18),
@@ -496,61 +496,61 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `compte`
 --
 ALTER TABLE `compte`
-  MODIFY `idCompte` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idCompte` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `element`
 --
 ALTER TABLE `element`
-  MODIFY `idMatiere` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idMatiere` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  MODIFY `idFiliere` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idFiliere` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `inscriptionannuelle`
 --
 ALTER TABLE `inscriptionannuelle`
-  MODIFY `idInscription` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idInscription` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `inscriptionmatiere`
 --
 ALTER TABLE `inscriptionmatiere`
-  MODIFY `idInscriptionMatiere` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `idInscriptionMatiere` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `inscriptionmodule`
 --
 ALTER TABLE `inscriptionmodule`
-  MODIFY `idInscriptionModule` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `idInscriptionModule` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `modifetudianthistori`
 --
 ALTER TABLE `modifetudianthistori`
-  MODIFY `idModif` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idModif` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `module`
 --
 ALTER TABLE `module`
-  MODIFY `idModule` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idModule` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `niveau`
 --
 ALTER TABLE `niveau`
-  MODIFY `idNiveau` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `idNiveau` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `role`
 --
 ALTER TABLE `role`
-  MODIFY `idRole` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idRole` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées

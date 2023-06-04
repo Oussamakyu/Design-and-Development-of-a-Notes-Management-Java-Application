@@ -30,14 +30,16 @@ public class EtudiantDao {
         Etudiant etudiant = null;
         try {
             Connection c = DBConnection.getInstance();
-            PreparedStatement idstm = c.prepareStatement("SELECT * FROM etudiant WHERE idEtudiant=?");
+            PreparedStatement idstm = c.prepareStatement("SELECT u.idUtilisateur,e.dateNaissance,e.cne,u.nom,u.prenom FROM etudiant e, utilisateur u WHERE e.idEtudiant=u.idUtilisateur AND e.idEtudiant=?");
             idstm.setLong(1, pIdEtudiant);
             ResultSet rs = idstm.executeQuery();
             if (rs.next()) {
                 etudiant = new Etudiant();
-                etudiant.setIdUtilisateur(rs.getLong("idEtudiant"));
-                etudiant.setCne(rs.getString("cne"));
-                etudiant.setDateNaissance(rs.getDate("dateNaissance"));
+                etudiant.setIdUtilisateur(rs.getLong("u.idUtilisateur"));
+                etudiant.setCne(rs.getString("e.cne"));
+                etudiant.setDateNaissance(rs.getDate("e.dateNaissance"));
+                etudiant.setNom(rs.getString("u.nom"));
+                etudiant.setPrenom(rs.getString("u.prenom"));
             }
 
         } catch (SQLException ex) {

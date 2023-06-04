@@ -43,6 +43,40 @@ public class InscriptionAnnuelleDao {
 
     }
 
+    public List<InscriptionAnnuelle> getInscriptionAnnByNiv(String pNiveauAlias) throws DataBaseException{
+        List<InscriptionAnnuelle> inscriptionAnnList =new ArrayList<>();
+        try{
+            Connection c = DBConnection.getInstance();
+            PreparedStatement stm = c.prepareStatement("SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.idNiveau=n.idNiveau AND n.alias=? AND i.annee=(SELECT max(annee) FROM inscriptionannuelle);");
+            stm.setString(1,pNiveauAlias);
+            ResultSet rs = stm.executeQuery();
+
+            while(rs.next()){
+                Etudiant etudiant = new Etudiant();
+                Niveau niveau = new Niveau(pNiveauAlias);
+                etudiant.setIdUtilisateur(rs.getLong(9));
+                InscriptionAnnuelle inscriptionAnn = new InscriptionAnnuelle();
+                inscriptionAnn.setIdInscription(rs.getLong(1));
+                inscriptionAnn.setAnnee(rs.getInt(2));
+                inscriptionAnn.setEtat(rs.getInt(3));
+                inscriptionAnn.setMention(rs.getString(4));
+                inscriptionAnn.setPlusInfos(rs.getString(5));
+                inscriptionAnn.setRang(rs.getInt(6));
+                inscriptionAnn.setType(rs.getString(7));
+                inscriptionAnn.setValidation(rs.getString(8));
+                inscriptionAnn.setEtudiant(etudiant);
+                inscriptionAnn.setNiveau(niveau);
+
+                inscriptionAnnList.add(inscriptionAnn);
+
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            throw new DataBaseException(e);
+        }
+        return inscriptionAnnList;
+    }
+
     public List<InscriptionAnnuelle> getAllInscriptionAnn(Etudiant pEtudiant) throws DataBaseException{
         List<InscriptionAnnuelle> inscriptionAnnList =new ArrayList<>();
         try{

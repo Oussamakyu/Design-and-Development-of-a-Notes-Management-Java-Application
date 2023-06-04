@@ -18,6 +18,11 @@ public class Niveau {
 
 	private Filiere filiere;
 
+	public Niveau(String pNiveauAlias) {
+		this.alias = pNiveauAlias;
+	}
+
+
 	public Niveau(Long idNiveau) {
 		this.idNiveau = idNiveau;
 	}
@@ -28,7 +33,8 @@ public class Niveau {
 		this.titre = titre;
 	}
 
-	public Long getIdNiveau() {
+
+    public Long getIdNiveau() {
 		return idNiveau;
 	}
 

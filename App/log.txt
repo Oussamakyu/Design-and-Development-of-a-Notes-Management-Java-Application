@@ -44,3 +44,33 @@ Current charset is UTF-8. If password has been set using other charset, consider
 2023-05-29 21:03:51,286 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=51) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'BEGIN;
 2023-05-29 21:08:48,286 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=53) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'START TRANSACTION;
 2023-05-29 21:09:05,244 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=54) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'START TRANSACTION;
+2023-06-02 11:35:03,194 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: EXCEL_FILE_PATH (Le fichier spécifié est introuvable)
+2023-06-02 11:38:24,617  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-02 11:38:24,618  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-02 11:38:24,660  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-02 11:38:24,661  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-02 11:38:24,696  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-02 11:38:24,696  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-02 11:45:33,859  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-02 11:45:33,860  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-02 11:45:33,904  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-02 11:45:33,905  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-02 11:45:33,938  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-02 11:45:33,939  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-02 11:47:52,596 ERROR [StudentManager] Le niveau de l'étudiant avec l'id 101 est contradictoire avec les resultats de l'année passer.
+2023-06-02 11:48:25,583 ERROR [StudentManager] L'étudiant avec l'id 100 existe déja dans la base de données.
+2023-06-02 11:48:41,640  INFO [StudentManager] Reinscription de l'etudiant avec l'id 100 a étté effectué
+2023-06-02 11:48:41,682  INFO [StudentManager] Reinscription de l'etudiant avec l'id 101 a étté effectué
+2023-06-02 11:48:41,716  INFO [StudentManager] Reinscription de l'etudiant avec l'id 102 a étté effectué
+2023-06-02 12:58:20,263 ERROR [StudentManager] Le niveau de l'étudiant avec l'id 100 est contradictoire avec les resultats de l'année passer.
+2023-06-02 16:25:06,236 ERROR [NiveauDao] java.sql.SQLIntegrityConstraintViolationException: (conn=364) Column 'titre' in field list is ambiguous
+2023-06-02 16:37:01,988  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-02 16:37:01,989  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-02 16:37:02,039  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-02 16:37:02,039  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-02 16:37:02,090  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-02 16:37:02,090  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-02 16:49:00,516 ERROR [StudentManager] L'étudiant avec l'id 100 existe déja dans la base de données.
+2023-06-02 18:09:32,705 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=825) Could not set parameter at position 1 (values was 'CP1')
+Query - conn:825(M)  - "SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.idNiveau=n.idNiveau AND n.alias='CP1' AND i.annee=(SELECT max(annee) FROM inscriptionannuelle);"
+2023-06-02 18:48:07,699 ERROR [InscriptionModuleDao] java.sql.SQLTransientConnectionException: (conn=1073) Parameter at position 2 is not set
