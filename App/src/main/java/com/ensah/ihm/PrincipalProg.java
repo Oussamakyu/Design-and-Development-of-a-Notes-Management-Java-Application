@@ -131,6 +131,7 @@ public class PrincipalProg {
                         }
                     }
                 }
+                break;
             case 2:
                 try {
                     if(notesManager.verifierExistanceEnregistrements()){
@@ -144,6 +145,7 @@ public class PrincipalProg {
                 } catch (IOException | SQLException | DataBaseException e) {
                     e.printStackTrace();
                 }
+                break;
             case 3 :
                 System.out.println("hey");
             case 0 :
