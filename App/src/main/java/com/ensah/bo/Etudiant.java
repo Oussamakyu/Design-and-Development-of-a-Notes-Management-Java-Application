@@ -28,7 +28,6 @@ public class Etudiant extends Utilisateur {
 	}
 
 
-
 	public Etudiant(Long idUtilisateur, String cin, String email, String nom, String nomArabe, String photo, String prenom, String prenomArabe, String telephone) {
 		super(idUtilisateur, cin, email, nom, nomArabe, photo, prenom, prenomArabe, telephone);
 	}

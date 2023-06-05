@@ -108,7 +108,11 @@ public class ExcelDelibExport {
             studentsRow.add(studentData);
             for(int k=0;k<4;k++){
                 XSSFCell cell = studentData.createCell(k);
-                cell.setCellValue((String) pStudentInfos.get(i).get(k));
+                if (pStudentInfos.get(i).get(k) instanceof Integer){
+                    cell.setCellValue((Integer) pStudentInfos.get(i).get(k));
+                }else{
+                    cell.setCellValue((String) pStudentInfos.get(i).get(k));
+                }
                 cell.setCellStyle(cellStyle0);
             }
         }
