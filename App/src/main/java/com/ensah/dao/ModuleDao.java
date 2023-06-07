@@ -172,16 +172,15 @@ public class ModuleDao {
     }
 
     public boolean associateModulesToNiveau(long niveauId, List<Module> modules) throws DataBaseException {
-        String query = "INSERT INTO module (idModule, code, titre, idNiveau) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO module ( code, titre, idNiveau) VALUES ( ?, ?, ?)";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
 
             for (Module module : modules) {
-                statement.setLong(1, module.getIdModule());
+                statement.setString(1, module.getTitre());
                 statement.setString(2, module.getCode());
-                statement.setString(3, module.getTitre());
-                statement.setLong(4, niveauId);
+                statement.setLong(3, niveauId);
                 statement.addBatch();
             }
 
@@ -195,6 +194,9 @@ public class ModuleDao {
             throw new DataBaseException(e);
         }
     }
+
+
+
 
     public List<Module> getModulesByClass(long niveauId) throws DataBaseException {
         String query = "SELECT * FROM module WHERE idNiveau = ?";

@@ -165,15 +165,24 @@ public class PrincipalProg {
                     case 1 :
                         break;
                     case 2 :
-                        System.out.println("Ecrire le nom de la classe : ");
+                        System.out.println("Entrer le nom de la classe : ");
                         String nomCl = sc2.nextLine();
-                        System.out.println("Combien de modules vous voulez associer à cette classe? ");
-                        int num = sc2.nextInt();
-                        for(int i=0;i<num;i++){
+                        System.out.println("Combien de modules voulez-vous associer à cette classe ? ");
+                        int num = Integer.parseInt(sc2.nextLine());
+
+                        for (int i = 0; i < num; i++) {
                             System.out.println("Entrer le titre du module à ajouter : ");
                             String titre = sc2.nextLine();
-                            structureManager.associateModuleWithNiveau(structureManager.getIdModule(titre),structureManager.getIdNiveau(nomCl));
+                            System.out.println(titre);
+                            boolean x = structureManager.associateModuleWithNiveau(structureManager.getIdModule(titre), structureManager.getIdNiveau(nomCl));
+                            if(x)
+                                System.out.println("Ajouté avec succès");
+                            else
+                                System.out.println("sir tn3s");
+                            break;
                         }
+
+
                         break;
 
 

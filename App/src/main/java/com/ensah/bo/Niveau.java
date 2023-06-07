@@ -1,5 +1,6 @@
 package com.ensah.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,7 +13,7 @@ public class Niveau {
 
 	private String titre;
 
-	private List<Module> modules;
+	private List<Module> modules = new ArrayList<>();
 
 	private List<InscriptionAnnuelle> inscriptions;
 

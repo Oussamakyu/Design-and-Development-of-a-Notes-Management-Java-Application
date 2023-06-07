@@ -112,7 +112,7 @@ public class StructureManager {
         if (module != null && niveau != null) {
             // Associate the module with the niveau
             niveau.addModule(module);
-            niveauDao.updateNiveau(niveau,niveau.getIdNextNiveau());
+            moduleDao.associateModulesToNiveau(niveauId,niveau.getModules());
             return true;
         }
 
