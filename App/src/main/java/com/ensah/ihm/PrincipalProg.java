@@ -15,21 +15,21 @@ import java.util.Scanner;
 
 public class PrincipalProg {
     private static Logger LOGGER = Logger.getLogger(Main.class);
-
     public static void printMenu() {
         /**
          * Affiche le menu de l'application
          */
 
-        System.out.println("1-	 ");
-        System.out.println("2-	 ");
-        System.out.println("3-	 ");
-        System.out.println("4-	 ");
+        System.out.println("Ajouter un nouveau étudiant depuis le fichier excel	: 1 ");
+        System.out.println("Ajouter des délibérations depuis le fichier excel : 2 ");
+        System.out.println("Exporter le fichier des délibérations : 3 ");
+        System.out.println("Gérer la structure et les éléments pédagogiques : 4 ");
         System.out.println("5-   ");
         System.out.println("0-	Sortir ");
     }
 
     public static void main(String[] args) throws BusinessLogicException, DataBaseException, ImportException {
+        StructureManager structureManager = new StructureManager();
         String logo = "\n" +
                 " __   ___  __  ___    __           __   ___  __           __  ___  ___  __  \n" +
                 "/ _` |__  /__`  |  | /  \\ |\\ |    |  \\ |__  /__`    |\\ | /  \\  |  |__  /__` \n" +
@@ -147,7 +147,39 @@ public class PrincipalProg {
                 }
                 break;
             case 3 :
+                //Question sur l'Alias
                 System.out.println("hey");
+                break;
+            case 4 :
+                System.out.println("Modifier/Supprimer/Créer les éléments, les modules, les classes, et les filières : 1 ");
+                System.out.println("Associer des modules à une classe (niveau) : 2 ");
+                System.out.println("Associer des éléments à un module : 3 ");
+                System.out.println("Associer des classes à une filière : 4 ");
+                System.out.println("Consulter les modules d’une classe : 5 ");
+                System.out.println("Affecter un coordonnateur à la filière : 6 ");
+                System.out.println("Saisir le numéro de votre choix: ");
+                Scanner sc2 = new Scanner(System.in);
+                int choix2 = sc2.nextInt();
+                sc2.nextLine();
+                switch (choix2){
+                    case 1 :
+                        break;
+                    case 2 :
+                        System.out.println("Ecrire le nom de la classe : ");
+                        String nomCl = sc2.nextLine();
+                        System.out.println("Combien de modules vous voulez associer à cette classe? ");
+                        int num = sc2.nextInt();
+                        for(int i=0;i<num;i++){
+                            System.out.println("Entrer le titre du module à ajouter : ");
+                            String titre = sc2.nextLine();
+                            structureManager.associateModuleWithNiveau(structureManager.getIdModule(titre),structureManager.getIdNiveau(nomCl));
+                        }
+                        break;
+
+
+
+                }
+
             case 0 :
                 System.out.println("Bye!");
                 System.exit(0);

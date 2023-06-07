@@ -1,6 +1,7 @@
 package com.ensah.dao;
 
 import com.ensah.bo.Etudiant;
+import com.ensah.bo.Filiere;
 import org.apache.log4j.Logger;
 import com.ensah.bo.Module;
 import com.ensah.bo.Niveau;
@@ -15,7 +16,8 @@ import java.util.List;
 public class NiveauDao {
 
     private Logger logger = Logger.getLogger(NiveauDao.class);
-    public Niveau getNiveau(long pNiveauId) throws DataBaseException{
+
+    public Niveau getNiveau(long pNiveauId) throws DataBaseException {
         Niveau niveau = null;
         try {
             Connection c = DBConnection.getInstance();
@@ -23,7 +25,7 @@ public class NiveauDao {
             idstm.setLong(1, pNiveauId);
             ResultSet rs = idstm.executeQuery();
             if (rs.next()) {
-                niveau = new Niveau(rs.getLong(1),rs.getString(2),rs.getString(3));
+                niveau = new Niveau(rs.getLong(1), rs.getString(2), rs.getString(3));
             }
 
         } catch (SQLException ex) {
@@ -33,7 +35,7 @@ public class NiveauDao {
         return niveau;
     }
 
-    public long getNextNiveau(long pNiveauId) throws DataBaseException{
+    public long getNextNiveau(long pNiveauId) throws DataBaseException {
         long idNextNiveau = 0;
         try {
             Connection c = DBConnection.getInstance();
@@ -51,7 +53,7 @@ public class NiveauDao {
         return idNextNiveau;
     }
 
-    public List<Module> getModules(long pNiveauId) throws DataBaseException{
+    public List<Module> getModules(long pNiveauId) throws DataBaseException {
         List<Module> modulesId = new ArrayList<>();
         try {
             Connection c = DBConnection.getInstance();
@@ -59,7 +61,7 @@ public class NiveauDao {
             idstm.setLong(1, pNiveauId);
             ResultSet rs = idstm.executeQuery();
             while (rs.next()) {
-                Module module=new Module();
+                Module module = new Module();
                 module.setIdModule(rs.getLong("idModule"));
                 modulesId.add(module);
             }
@@ -71,6 +73,7 @@ public class NiveauDao {
 
         return modulesId;
     }
+
     public List<Module> getModulesByAlias(String pNiveauAlias) throws DataBaseException {
         List<Module> modulesTitre = new ArrayList<>();
         try {
@@ -114,5 +117,142 @@ public class NiveauDao {
         return studentsInfos;
     }
 
+    public boolean createNiveau(Niveau niveau,long idNextNiveau) throws DataBaseException {
+        String query = "INSERT INTO niveau (idNiveau, alias, titre, idFiliere, idNextNiveau) VALUES (?, ?, ?, ?, ?)";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, niveau.getIdNiveau());
+            statement.setString(2, niveau.getAlias());
+            statement.setString(3, niveau.getTitre());
+            statement.setLong(4, niveau.getFiliere().getIdFiliere());
+            statement.setLong(5, idNextNiveau);
+            int rowsInserted = statement.executeUpdate();
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public boolean updateNiveau(Niveau niveau,long idNextNiveau) throws DataBaseException {
+        String query = "UPDATE niveau SET alias = ?, titre = ?, idFiliere = ?, idNextNiveau = ? WHERE idNiveau = ?";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, niveau.getAlias());
+            statement.setString(2, niveau.getTitre());
+            statement.setLong(3, niveau.getFiliere().getIdFiliere());
+            statement.setLong(4,idNextNiveau);
+            statement.setLong(5, niveau.getIdNiveau());
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
+
+    public boolean deleteNiveau(long niveauId) throws DataBaseException {
+        String query = "DELETE FROM niveau WHERE idNiveau = ?";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, niveauId);
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
+    public Niveau findNiveauById(long niveauId) throws DataBaseException {
+        String query = "SELECT * FROM niveau WHERE idNiveau = ?";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setLong(1, niveauId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                long idNiveau = resultSet.getLong("idNiveau");
+                String alias = resultSet.getString("alias");
+                String titre = resultSet.getString("titre");
+                long idFiliere = resultSet.getLong("idFiliere");
+                long idNextNiveau = resultSet.getLong("idNextNiveau");
+                return new Niveau(idNiveau, alias, titre, new Filiere(idFiliere),idNextNiveau);
+            }
+
+            return null;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
+    public boolean associateClassesToFiliere(long filiereId, List<Niveau> niveaux) throws DataBaseException {
+        String query = "UPDATE niveau SET idFiliere = ? WHERE idNiveau = ?";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            for (Niveau niveau : niveaux) {
+                statement.setLong(1, filiereId);
+                statement.setLong(2, niveau.getIdNiveau());
+                statement.addBatch();
+            }
+
+            int[] rowsUpdated = statement.executeBatch();
+            return rowsUpdated.length == niveaux.size();
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
+    public Long getNiveauIdByAlias(String alias) throws DataBaseException {
+        String query = "SELECT idNiveau FROM niveau WHERE alias = ?";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, alias);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getLong("idNiveau");
+            }
+
+            return null;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
+
+
+
 
 }
+
+

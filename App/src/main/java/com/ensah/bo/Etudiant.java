@@ -32,8 +32,12 @@ public class Etudiant extends Utilisateur {
 		super(idUtilisateur, cin, email, nom, nomArabe, photo, prenom, prenomArabe, telephone);
 	}
 
+    public Etudiant(long idEtudiant) {
+		setIdUtilisateur(idEtudiant);
+    }
 
-	public String getCne() {
+
+    public String getCne() {
 		return cne;
 	}
 

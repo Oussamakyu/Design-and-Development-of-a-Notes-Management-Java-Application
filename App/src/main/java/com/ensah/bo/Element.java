@@ -19,6 +19,16 @@ public class Element {
 
 	private Module module;
 
+	public Element(){}
+
+	public Element(Long idMatiere, String nom, String code, double currentCoefficient, Module module) {
+		this.idMatiere = idMatiere;
+		this.nom = nom;
+		this.code = code;
+		this.currentCoefficient = currentCoefficient;
+		this.module = module;
+	}
+
 	public Long getIdMatiere() {
 		return idMatiere;
 	}

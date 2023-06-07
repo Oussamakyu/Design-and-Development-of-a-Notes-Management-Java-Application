@@ -625,6 +625,20 @@ ALTER TABLE `module`
 --
 ALTER TABLE `niveau`
   ADD CONSTRAINT `FK9qvkxk4ayqkjopclmlgoel8d9` FOREIGN KEY (`idFiliere`) REFERENCES `filiere` (`idFiliere`);
+
+CREATE TABLE `coordinatorfiliere` (
+  `idCoordinator` bigint(20) NOT NULL,
+  `filiereId` bigint(20) NOT NULL,
+  PRIMARY KEY (`idCoordinator`, `filiereId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `coordinatorfiliere`
+  ADD CONSTRAINT FOREIGN KEY (`idCoordinator`) REFERENCES `enseignant` (`idEnseighant`);
+  
+ALTER TABLE `coordinatorfiliere`  
+  ADD CONSTRAINT FOREIGN KEY (`filiereId`) REFERENCES `filiere` (`idFiliere`);
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

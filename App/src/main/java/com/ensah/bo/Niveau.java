@@ -12,11 +12,20 @@ public class Niveau {
 
 	private String titre;
 
-	private List<java.lang.Module> modules;
+	private List<Module> modules;
 
 	private List<InscriptionAnnuelle> inscriptions;
 
 	private Filiere filiere;
+	private long idNextNiveau;
+
+	public Niveau(Long idNiveau, String alias, String titre, Filiere filiere,long idNextNiveau) {
+		this.idNiveau = idNiveau;
+		this.alias = alias;
+		this.titre = titre;
+		this.filiere = filiere;
+		this.idNextNiveau=idNextNiveau;
+	}
 
 	public Niveau(String pNiveauAlias) {
 		this.alias = pNiveauAlias;
@@ -58,11 +67,11 @@ public class Niveau {
 		this.titre = titre;
 	}
 
-	public List<java.lang.Module> getModules() {
+	public List<Module> getModules() {
 		return modules;
 	}
 
-	public void setModules(List<java.lang.Module> modules) {
+	public void setModules(List<Module> modules) {
 		this.modules = modules;
 	}
 
@@ -80,6 +89,18 @@ public class Niveau {
 
 	public void setFiliere(Filiere filiere) {
 		this.filiere = filiere;
+	}
+
+	public long getIdNextNiveau() {
+		return idNextNiveau;
+	}
+
+	public void setIdNextNiveau(long idNextNiveau) {
+		this.idNextNiveau = idNextNiveau;
+	}
+
+	public void addModule(Module m){
+		modules.add(m);
 	}
 
 	

@@ -16,6 +16,19 @@ public class Module {
 
 	private Niveau niveau;
 
+	public Module(){}
+
+	public Module(Long idModule) {
+		this.idModule = idModule;
+	}
+
+	public Module(Long idModule, String titre, String code, Niveau niveau) {
+		this.idModule = idModule;
+		this.titre = titre;
+		this.code = code;
+		this.niveau = niveau;
+	}
+
 	public Long getIdModule() {
 		return idModule;
 	}
@@ -55,6 +68,10 @@ public class Module {
 
 	public void setElements(List<Element> elements) {
 		this.elements = elements;
+	}
+
+	public void addElement(Element e){
+		elements.add(e);
 	}
 
 	@Override

@@ -27,6 +27,22 @@ public class Filiere {
 
 	private Set<Niveau> niveaux;
 
+	public Filiere(Long idFiliere) {
+		this.idFiliere = idFiliere;
+	}
+
+	public Filiere(Long idFiliere, String titreFiliere) {
+		this.idFiliere = idFiliere;
+		this.titreFiliere = titreFiliere;
+	}
+
+	public Filiere(Long idFiliere, String titreFiliere, String codeFiliere, int anneeaccreditation, int anneeFinaccreditation) {
+		this.idFiliere = idFiliere;
+		this.titreFiliere = titreFiliere;
+		this.codeFiliere = codeFiliere;
+		this.anneeaccreditation = anneeaccreditation;
+		this.anneeFinaccreditation = anneeFinaccreditation;
+	}
 
 	public Long getIdFiliere() {
 		return idFiliere;
