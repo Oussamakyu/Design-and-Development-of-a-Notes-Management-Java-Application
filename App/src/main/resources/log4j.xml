@@ -13,12 +13,12 @@
         </layout>
     </appender>
 
-<!--    &lt;!&ndash; Journalisation dans la console &ndash;&gt;-->
-<!--    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">-->
-<!--        <layout class="org.apache.log4j.PatternLayout">-->
-<!--            <param name="ConversionPattern" value="%d{ISO8601} %5p [%c{1}] %m %n" />-->
-<!--        </layout>-->
-<!--    </appender>-->
+    <!-- Journalisation dans la console -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %5p [%c{1}] %m %n" />
+        </layout>
+    </appender>
 
     <root>
         <priority value="trace" />

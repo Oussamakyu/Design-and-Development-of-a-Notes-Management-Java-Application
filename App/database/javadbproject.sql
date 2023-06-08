@@ -635,7 +635,7 @@ ALTER TABLE `coordinatorfiliere`
   ADD CONSTRAINT FOREIGN KEY (`idCoordinator`) REFERENCES `enseignant` (`idEnseighant`);
   
 ALTER TABLE `coordinatorfiliere`  
-  ADD CONSTRAINT FOREIGN KEY (`filiereId`) REFERENCES `filiere` (`idFiliere`);
+  ADD CONSTRAINT FOREIGN KEY (`filiereId`) REFERENCES `filiere`(`idFiliere`);
 
 
 COMMIT;

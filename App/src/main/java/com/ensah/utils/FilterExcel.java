@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilterExcel {
-
+    // Cette class permet de separer les étudiant destinées pour la reinscription et l'inscription
     private List<Etudiant> newStudents = new ArrayList<>();
     private List<Object> oldStudents = new ArrayList<>();
 

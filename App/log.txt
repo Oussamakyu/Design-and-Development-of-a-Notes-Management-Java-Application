@@ -121,3 +121,5 @@ Query - conn:825(M)  - "SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.
 2023-06-08 18:52:32,845  INFO [StudentManager] Modification des données de l'etudiant avec l'id 101
 2023-06-08 18:52:32,851  INFO [StudentManager] Reinscription de l'etudiant avec l'id 101 a été effectué
 2023-06-08 18:52:32,917  INFO [StudentManager] Reinscription de l'etudiant avec l'id 102 a été effectué
+2023-06-08 22:06:22,932 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=98) Unknown database 'mydb3'
+2023-06-08 22:09:44,107 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=246) Unknown database 'mydb3'

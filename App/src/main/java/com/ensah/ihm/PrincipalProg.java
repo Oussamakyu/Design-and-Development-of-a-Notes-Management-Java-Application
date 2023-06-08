@@ -22,7 +22,7 @@ public class PrincipalProg {
          * Affiche le menu de l'application
          */
 
-        System.out.println("Ajouter un nouveau étudiant depuis le fichier excel	: 1 ");
+        System.out.println("Inscription/Reinscription des étudiants	: 1 ");
         System.out.println("Ajouter des délibérations depuis le fichier excel : 2 ");
         System.out.println("Exporter le fichier des délibérations : 3 ");
         System.out.println("Gérer la structure et les éléments pédagogiques : 4 ");
@@ -160,7 +160,6 @@ public class PrincipalProg {
                 }
                 break;
             case 3 :
-                //Question sur l'Alias
                 DeliberationManager deliberationManager = new DeliberationManager();
                 System.out.println("Entrer l'alias du niveau");
                 String niveauAlias = sc.nextLine();
