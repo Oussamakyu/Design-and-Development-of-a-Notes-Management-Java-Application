@@ -83,6 +83,8 @@ public class PrincipalProg {
 
         switch (choix) {
             case 1:
+                System.out.println("Entrer le chemain du fichier excel: ");
+                String path = sc.nextLine();
                 String Path = "C:\\Users\\asus\\Desktop\\Java\\Project\\Design-and-Development-of-a-Notes-Management-Java-Application\\App\\database\\nouveauEtudiant.xlsx";
                 ExcelImport excelImport = new ExcelImport(Path);
                 FilterExcel test = new FilterExcel();
