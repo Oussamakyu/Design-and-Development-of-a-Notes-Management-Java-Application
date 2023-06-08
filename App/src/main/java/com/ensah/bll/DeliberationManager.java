@@ -25,9 +25,6 @@ public class DeliberationManager {
 
 
         List<InscriptionAnnuelle> inscriptionList = inscriptionAnnuelleDao.getInscriptionAnnByNiv(pClasseAlias);
-        for(InscriptionAnnuelle ins : inscriptionList){
-            System.out.println(ins.getIdInscription());
-        }
         for (int i=0;i<inscriptionList.size();i++){
             if(inscriptionList.get(i).getType().equals("REINSCRIPTION")){
                 List<InscriptionAnnuelle> inscriptioAj = inscriptionAnnuelleDao.getAllInscriptionAnn(inscriptionList.get(i).getEtudiant());
@@ -47,7 +44,6 @@ public class DeliberationManager {
             List<Double> notes = new ArrayList<>();
             List<Object> etudInf = new ArrayList<>();
             Etudiant etud = etudiantDao.findById(inscriptionList.get(i).getEtudiant().getIdUtilisateur());
-            //System.out.println(etud.getNom());
             etudInf.add(Integer.parseInt(String.valueOf(etud.getIdUtilisateur())));
             etudInf.add(etud.getCne());
             etudInf.add(etud.getNom());
@@ -59,26 +55,21 @@ public class DeliberationManager {
                     module.add(mod.getTitre());
                 }
                 List<Element> elements = moduleDao.getElementsByName(mod.getTitre());
-                //System.out.println(mod.getTitre());
                 if (elements.size() != 0) {
                     for (Element ele : elements) {
                         if(i==0){
                             module.add(ele.getNom());
                         }
                         InscriptionMatiere inscMatiere = inscriptionMatiereDao.getInscriptionMatiere(inscriptionList.get(i).getIdInscription(),ele.getNom());
-                        //System.out.println("Element  :" + ele.getNom());
-                        //System.out.println(inscMatiere.getNoteFinale());
                         notes.add(inscMatiere.getNoteFinale());
                     }
                 }else{
                     InscriptionModule inscModule = inscriptionModuleDao.getInscriptionModule(inscriptionList.get(i).getIdInscription(),mod.getTitre());
-                    //System.out.println(inscModule.getNoteFinale());
                     notes.add(inscModule.getNoteFinale());
                 }
                 if(i==0){
                     modules.add(module);
                 }
-                //System.out.println("=============================");
             }
             dataStudents.add(notes);
         }
@@ -94,7 +85,6 @@ public class DeliberationManager {
                         if((Double.parseDouble(String.valueOf(dataStudents.get(i+1).get(j))))<(Double.parseDouble(String.valueOf(dataStudents.get(i+3).get(j)))) && (Double.parseDouble(String.valueOf(dataStudents.get(i+3).get(j)))) !=0){
                             dataStudents.get(i + 1).set(j, dataStudents.get(i + 3).get(j));
                         }
-                        //dataStudents.get(i + 1).set(j, dataStudents.get(i + 3).get(j));
                     }
                     finaleDataStudents.set(i+1,dataStudents.get(i+1));
                 }else{
