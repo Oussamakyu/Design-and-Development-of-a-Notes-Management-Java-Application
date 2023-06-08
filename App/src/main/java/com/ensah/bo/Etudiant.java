@@ -27,6 +27,32 @@ public class Etudiant extends Utilisateur {
 		super();
 	}
 
+	public Utilisateur(Long idUtilisateur, String nom, String prenom, String cin, String email, String telephone, String nomArabe, String prenomArabe, String photo) {
+		this.idUtilisateur = idUtilisateur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.cin = cin;
+		this.email = email;
+		this.telephone = telephone;
+		this.nomArabe = nomArabe;
+		this.prenomArabe = prenomArabe;
+		this.photo = photo;
+	}
+
+
+	public Utilisateur(Long idUtilisateur, String nom, String prenom) {
+		this.idUtilisateur = idUtilisateur;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
+
+	public Etudiant(long idUtilisateur, String cne, String nom, String prenom) {
+		super(idUtilisateur,nom,prenom);
+		this.cne= cne;}
+
+
+
 
 	public Etudiant(Long idUtilisateur, String cin, String email, String nom, String nomArabe, String photo, String prenom, String prenomArabe, String telephone) {
 		super(idUtilisateur, cin, email, nom, nomArabe, photo, prenom, prenomArabe, telephone);
