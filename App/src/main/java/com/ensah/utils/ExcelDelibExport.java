@@ -22,46 +22,23 @@ public class ExcelDelibExport {
         workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("Deliberation");
 
-        XSSFCellStyle cellStyle0 = workbook.createCellStyle();
-        cellStyle0.setBorderBottom(BorderStyle.THIN);
-        cellStyle0.setBorderTop(BorderStyle.THIN);
-        cellStyle0.setBorderLeft(BorderStyle.THIN);
-        cellStyle0.setBorderRight(BorderStyle.THIN);
-        cellStyle0.setAlignment(HorizontalAlignment.CENTER);
-        cellStyle0.setVerticalAlignment(VerticalAlignment.TOP);
+        // Creation des cellule et leurs style
+        XSSFCellStyle cellStyle0 = defaultStyling();
 
-        XSSFCellStyle cellStyle1 = workbook.createCellStyle();
-        cellStyle1.setAlignment(HorizontalAlignment.CENTER);
-        cellStyle1.setVerticalAlignment(VerticalAlignment.TOP);
+        XSSFCellStyle cellStyle1 = defaultStyling();
         cellStyle1.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
         cellStyle1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-        cellStyle1.setBorderBottom(BorderStyle.THIN);
-        cellStyle1.setBorderTop(BorderStyle.THIN);
-        cellStyle1.setBorderLeft(BorderStyle.THIN);
-        cellStyle1.setBorderRight(BorderStyle.THIN);
 
 
-        XSSFCellStyle cellStyle2 = workbook.createCellStyle();
-        cellStyle2.setAlignment(HorizontalAlignment.CENTER);
-        cellStyle2.setVerticalAlignment(VerticalAlignment.TOP);
-        cellStyle2.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        XSSFCellStyle cellStyle2 = defaultStyling();
         cellStyle2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-        cellStyle2.setBorderBottom(BorderStyle.THIN);
-        cellStyle2.setBorderTop(BorderStyle.THIN);
-        cellStyle2.setBorderLeft(BorderStyle.THIN);
-        cellStyle2.setBorderRight(BorderStyle.THIN);
+        cellStyle2.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
 
-        XSSFCellStyle cellStyle3 = workbook.createCellStyle();
-        cellStyle3.setAlignment(HorizontalAlignment.CENTER);
-        cellStyle3.setVerticalAlignment(VerticalAlignment.TOP);
+        XSSFCellStyle cellStyle3 = defaultStyling();
         cellStyle3.setFillForegroundColor(IndexedColors.GREY_80_PERCENT.getIndex());
         cellStyle3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-        cellStyle3.setBorderBottom(BorderStyle.THIN);
-        cellStyle3.setBorderTop(BorderStyle.THIN);
-        cellStyle3.setBorderLeft(BorderStyle.THIN);
-        cellStyle3.setBorderRight(BorderStyle.THIN);
 
-
+        // Creation des lignes et les cellules qui sont statique
         XSSFRow headerRow1 = sheet.createRow(0);
         XSSFRow headerRow2 = sheet.createRow(1);
         XSSFRow coloredRow = sheet.createRow(2);
@@ -84,6 +61,7 @@ public class ExcelDelibExport {
         classeCelllb.setCellValue("Classe");
         classeCelllb.setCellStyle(cellStyle1);
 
+
         for (int i=0,j=0;i<row1.length;i++,j+=2){
             XSSFCell cell = headerRow1.createCell(j);
             cell.setCellValue(row1[i]);
@@ -101,6 +79,7 @@ public class ExcelDelibExport {
             blank2cell.setCellStyle(cellStyle3);
         }
 
+        //Insertion les données des étudiants (ID,CNE,NOM,PRENOM)
         List<XSSFRow> studentsRow = new ArrayList<>();
         for(int i=0,j=5;i<pStudentInfos.size() && j<pStudentInfos.size()+5;i+=2,j++){
             XSSFRow studentData = sheet.createRow(j);
@@ -115,64 +94,71 @@ public class ExcelDelibExport {
                 cell.setCellStyle(cellStyle0);
             }
         }
-
+        // Recuperer les notes finales des etudiants de la liste passé en parametre (pStudentInfos)
         List<List> StudentsFinalNotes = new ArrayList<>();
         for(int i=1;i<pStudentInfos.size();i+=2){
             StudentsFinalNotes.add(pStudentInfos.get(i));
         }
+
+        // Insertion des notes de chaque etudiant, application des formules de calculs dans les cellules correspondantes
+        // Recuperation des References des cellules de moyen et du rang de chaque etudiant pour appliquer la formule de calcul du rang
         List<String> allMoyGenRefCell = new ArrayList<>();
         List<XSSFCell> allRangCell = new ArrayList<>();
         for(int i=0;i<studentsRow.size();i++){
             List<String> allMoyRefer = new ArrayList<>();
             int indicenote =0;
             int k = 4;
-                for(int e=0;e< pModules.size();e++){
-                    if(pModules.get(e).size() == 1){
-                        XSSFCell markcell = studentsRow.get(i).createCell(k);
-                        String refernote = markcell.getReference();
-                        XSSFCell validationcell = studentsRow.get(i).createCell(k+1);
-                        markcell.setCellValue(Double.parseDouble(StudentsFinalNotes.get(i).get(indicenote).toString()));
-                        allMoyRefer.add(markcell.getReference());
-                        markcell.setCellStyle(cellStyle0);
-                        validationcell.setCellFormula("IF("+refernote+"<10,\"NV\",\"V\")");
-                        validationcell.setCellStyle(cellStyle0);
-                        indicenote +=1;
-                        k= k+2;
-                    }
-                    else{
-                        int note=indicenote;
-                        List<String> refer = new ArrayList<>();
-                        while(indicenote<=note+pModules.get(e).size()-2){
-                            XSSFCell markcell2 = studentsRow.get(i).createCell(k);
-                            markcell2.setCellValue(Double.parseDouble(StudentsFinalNotes.get(i).get(indicenote).toString()));
-                            refer.add(markcell2.getReference());
-                            markcell2.setCellStyle(cellStyle0);
-                            indicenote +=1;
-                            k=k+1;
-                        }
-                        XSSFCell moyElementcell = studentsRow.get(i).createCell(k);
-                        String refermoy = moyElementcell.getReference();
-                        XSSFCell valicell = studentsRow.get(i).createCell(k+1);
-                        moyElementcell.setCellFormula(createMeanFormula(refer));
-                        moyElementcell.setCellStyle(cellStyle0);
-                        allMoyRefer.add(moyElementcell.getReference());
-                        valicell.setCellFormula("IF("+refermoy+"<10,\"NV\",\"V\")");
-                        valicell.setCellStyle(cellStyle0);
-                        k=k+2;
-                    }
+            for(int e=0;e< pModules.size();e++){
+                if(pModules.get(e).size() == 1){
+                    XSSFCell markcell = studentsRow.get(i).createCell(k);
+                    String refernote = markcell.getReference();
+                    XSSFCell validationcell = studentsRow.get(i).createCell(k+1);
+                    markcell.setCellValue(Double.parseDouble(StudentsFinalNotes.get(i).get(indicenote).toString()));
+                    allMoyRefer.add(markcell.getReference());
+                    markcell.setCellStyle(cellStyle0);
+                    validationcell.setCellFormula("IF("+refernote+"<10,\"NV\",\"V\")");
+                    validationcell.setCellStyle(cellStyle0);
+                    indicenote +=1;
+                    k= k+2;
                 }
-                XSSFCell genMoyen = studentsRow.get(i).createCell(k);
-                genMoyen.setCellStyle(cellStyle0);
-                allMoyGenRefCell.add(genMoyen.getReference());
-                XSSFCell rang = studentsRow.get(i).createCell(k+1);
-                allRangCell.add(rang);
-                rang.setCellStyle(cellStyle0);
-                genMoyen.setCellFormula(createMeanFormula(allMoyRefer));
+                else{
+                    int note=indicenote;
+                    List<String> refer = new ArrayList<>();
+                    while(indicenote<=note+pModules.get(e).size()-2){
+                        XSSFCell markcell2 = studentsRow.get(i).createCell(k);
+                        markcell2.setCellValue(Double.parseDouble(StudentsFinalNotes.get(i).get(indicenote).toString()));
+                        refer.add(markcell2.getReference());
+                        markcell2.setCellStyle(cellStyle0);
+                        indicenote +=1;
+                        k=k+1;
+                    }
+                    XSSFCell moyElementcell = studentsRow.get(i).createCell(k);
+                    String refermoy = moyElementcell.getReference();
+                    XSSFCell valicell = studentsRow.get(i).createCell(k+1);
+                    moyElementcell.setCellFormula(createMeanFormula(refer));
+                    moyElementcell.setCellStyle(cellStyle0);
+                    allMoyRefer.add(moyElementcell.getReference());
+                    valicell.setCellFormula("IF("+refermoy+"<10,\"NV\",\"V\")");
+                    valicell.setCellStyle(cellStyle0);
+                    k=k+2;
+                }
+            }
+            XSSFCell genMoyen = studentsRow.get(i).createCell(k);
+            genMoyen.setCellStyle(cellStyle0);
+            allMoyGenRefCell.add(genMoyen.getReference());
+            XSSFCell rang = studentsRow.get(i).createCell(k+1);
+            allRangCell.add(rang);
+            rang.setCellStyle(cellStyle0);
+            genMoyen.setCellFormula(createMeanFormula(allMoyRefer));
         }
+
+        // Insertion de la formule de calcul de rang pour chaque etudiant
         for (int i=0;i<allMoyGenRefCell.size();i++){
             allRangCell.get(i).setCellFormula(createRankFormula(allMoyGenRefCell.get(i),allMoyGenRefCell.get(0),allMoyGenRefCell.get(allMoyGenRefCell.size() -1)));
         }
 
+        // Insertion des en-têtes des modules (nom des modules et les elements de chaque module)
+        // Insertion les cellules Validation et Moyen
         int i,j;
         for(i=0,j=4;i<pModules.size();i++){
             if(pModules.get(i).size() == 1){
@@ -194,7 +180,6 @@ public class ExcelDelibExport {
                 sheet.addMergedRegion(new CellRangeAddress(2,2,j,j+1));
                 sheet.addMergedRegion(new CellRangeAddress(3,3,j,j+1));
                 j+=pModules.get(i).size()+1;
-
             }else{
                 for(int k=j,c=0;k<j+pModules.get(i).size()+1;k++,c++){
                     XSSFCell cell = headerRow4.createCell(k);
@@ -243,6 +228,7 @@ public class ExcelDelibExport {
 
     }
 
+    // Fonction qui genere le fichier de deliberation
     public void generate() throws IOException {
         FileOutputStream fileOut = new FileOutputStream("delib.xlsx");
         workbook.write(fileOut);
@@ -250,6 +236,7 @@ public class ExcelDelibExport {
         workbook.close();
     }
 
+    // Fonction pour la creation de la formule du moyen pour chaque cellule responsable de la moyenne
     private static String createMeanFormula(List<String> cellReferences) {
         StringBuilder formulaBuilder = new StringBuilder();
         formulaBuilder.append("AVERAGE(");
@@ -262,6 +249,7 @@ public class ExcelDelibExport {
         return formulaBuilder.toString();
     }
 
+    // Fonction pour la creation de la formule du rang pour chaque cellule responsable du rang
     private static String createRankFormula(String targetCellReference, String startCellReference, String endCellReference) {
         StringBuilder formulaBuilder = new StringBuilder();
         formulaBuilder.append("RANK(");
@@ -272,5 +260,18 @@ public class ExcelDelibExport {
         formulaBuilder.append(endCellReference);
         formulaBuilder.append(")");
         return formulaBuilder.toString();
+    }
+
+    // Fonction qui regroupe les styles partagés
+    private XSSFCellStyle defaultStyling(){
+        XSSFCellStyle cellStyle = workbook.createCellStyle();
+        cellStyle.setAlignment(HorizontalAlignment.CENTER);
+        cellStyle.setVerticalAlignment(VerticalAlignment.TOP);
+        cellStyle.setBorderBottom(BorderStyle.THIN);
+        cellStyle.setBorderTop(BorderStyle.THIN);
+        cellStyle.setBorderLeft(BorderStyle.THIN);
+        cellStyle.setBorderRight(BorderStyle.THIN);
+
+        return cellStyle;
     }
 }
