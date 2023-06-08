@@ -9,6 +9,7 @@ import com.ensah.utils.FilterExcel;
 import org.apache.log4j.Logger;
 
 
+import javax.sound.midi.Soundbank;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -161,6 +162,7 @@ public class PrincipalProg {
             case 3 :
                 //Question sur l'Alias
                 DeliberationManager deliberationManager = new DeliberationManager();
+                System.out.println("Entrer l'alias du niveau");
                 String niveauAlias = sc.nextLine();
                 try{
                     deliberationManager.exportDeliberation(niveauAlias);
