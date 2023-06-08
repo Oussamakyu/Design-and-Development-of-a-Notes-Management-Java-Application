@@ -134,3 +134,16 @@ Query - conn:825(M)  - "SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.
 2023-06-08 22:19:09,630  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
 2023-06-08 22:19:09,690  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
 2023-06-08 22:19:09,691  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-08 22:26:31,657 ERROR [StudentManager] Le niveau de l'étudiant avec l'id 100 est contradictoire avec les resultats de l'année passer.
+2023-06-08 22:26:54,111 ERROR [StudentManager] L'étudiant avec l'id 103 n'existe pas dans la base de données.
+2023-06-08 22:27:21,039  INFO [EtudiantDao] l'inscription de l'étudiant  Yamani a été effectué avec succès 
+2023-06-08 22:27:21,039  INFO [StudentManager] L'etudiant avec l'id 103a été ajouter dans la base de données
+2023-06-08 22:27:21,091  INFO [EtudiantDao] l'inscription de l'étudiant  Ferdous a été effectué avec succès 
+2023-06-08 22:27:21,091  INFO [StudentManager] L'etudiant avec l'id 104a été ajouter dans la base de données
+2023-06-08 22:27:21,138  INFO [EtudiantDao] l'inscription de l'étudiant  Touhami a été effectué avec succès 
+2023-06-08 22:27:21,138  INFO [StudentManager] L'etudiant avec l'id 105a été ajouter dans la base de données
+2023-06-08 22:27:21,181  INFO [StudentManager] Reinscription de l'etudiant avec l'id 100 a été effectué
+2023-06-08 22:27:40,557  INFO [EtudiantDao] l'inscription de l'étudiant  Benabbou a été effectué avec succès 
+2023-06-08 22:27:40,558  INFO [StudentManager] Modification des données de l'etudiant avec l'id 101
+2023-06-08 22:27:40,564  INFO [StudentManager] Reinscription de l'etudiant avec l'id 101 a été effectué
+2023-06-08 22:27:40,638  INFO [StudentManager] Reinscription de l'etudiant avec l'id 102 a été effectué

@@ -25,6 +25,7 @@ public class DeliberationManager {
 
 
         List<InscriptionAnnuelle> inscriptionList = inscriptionAnnuelleDao.getInscriptionAnnByNiv(pClasseAlias);
+        // Verifier si l'étudiant a ajournée l'année précédente
         for (int i=0;i<inscriptionList.size();i++){
             if(inscriptionList.get(i).getType().equals("REINSCRIPTION")){
                 List<InscriptionAnnuelle> inscriptioAj = inscriptionAnnuelleDao.getAllInscriptionAnn(inscriptionList.get(i).getEtudiant());
@@ -38,6 +39,7 @@ public class DeliberationManager {
         if(inscriptionList.size() ==0){
             throw new BllException("Aucune inscription pour ce niveau");
         }
+        // Importation des notes des étudiants pour chaque module/element
         List<Module> modulesName = niveauDao.getModulesByAlias(pClasseAlias);
         List<List> dataStudents = new ArrayList<>();
         for(int i=0;i<inscriptionList.size();i++){
@@ -74,7 +76,7 @@ public class DeliberationManager {
             dataStudents.add(notes);
         }
 
-
+        // Regrouper les notes pour les étudiants qui ont déja ajourné
         List<List> finaleDataStudents = new ArrayList<>();
         for(int i=0;i<dataStudents.size();i+=4){
             finaleDataStudents.add(dataStudents.get(i));
@@ -93,8 +95,7 @@ public class DeliberationManager {
                 }
             }
         }
-
-        ExcelDelibExport delibExcel = new ExcelDelibExport(pClasseAlias,inscriptionList.get(0).getAnnee()+"/"+(inscriptionList.get(0).getAnnee()+1),modules,finaleDataStudents);
+        ExcelDelibExport delibExcel = new ExcelDelibExport(pClasseAlias,inscriptionList.get(inscriptionList.size()-1).getAnnee()+"/"+(inscriptionList.get(inscriptionList.size()-1).getAnnee()+1),modules,finaleDataStudents);
         delibExcel.generate();
     }
 
