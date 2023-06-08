@@ -123,3 +123,14 @@ Query - conn:825(M)  - "SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.
 2023-06-08 18:52:32,917  INFO [StudentManager] Reinscription de l'etudiant avec l'id 102 a été effectué
 2023-06-08 22:06:22,932 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=98) Unknown database 'mydb3'
 2023-06-08 22:09:44,107 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=246) Unknown database 'mydb3'
+2023-06-08 22:13:35,468 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 22:16:40,521 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 22:17:55,352 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: <?xml version="1.0" encoding="UTF-8"?> (La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte)
+2023-06-08 22:18:27,101 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 22:18:55,786 ERROR [StudentManager] L'étudiant avec l'id 101 n'existe pas dans la base de données.
+2023-06-08 22:19:09,557  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-08 22:19:09,558  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-08 22:19:09,630  INFO [EtudiantDao] l'inscription de l'étudiant  Benabbou a été effectué avec succès 
+2023-06-08 22:19:09,630  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-08 22:19:09,690  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-08 22:19:09,691  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
