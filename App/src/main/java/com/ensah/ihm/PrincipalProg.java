@@ -9,6 +9,7 @@ import com.ensah.utils.FilterExcel;
 import org.apache.log4j.Logger;
 
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -28,7 +29,7 @@ public class PrincipalProg {
         System.out.println("0-	Sortir ");
     }
 
-    public static void main(String[] args) throws BusinessLogicException, DataBaseException, ImportException {
+    public static void main(String[] args) throws BusinessLogicException, DataBaseException, ImportException, IOException {
         StructureManager structureManager = new StructureManager();
         String logo = "\n" +
                 " __   ___  __  ___    __           __   ___  __           __  ___  ___  __  \n" +
@@ -38,7 +39,6 @@ public class PrincipalProg {
         System.out.println(logo);
         //création des instances de la classe qui gèrent la logique métier
         NotesManager notesManager = new NotesManager();
-        StudentManager studentManager = new StudentManager();
         CadreAdministrateurDao cadreAdministrateurDao = new CadreAdministrateurDao(); // to remove later
 //        try {
 //            if (!DBInstaller.checkIfAlreadyInstalled()) {
@@ -85,53 +85,63 @@ public class PrincipalProg {
             case 1:
                 System.out.println("Entrer le chemain du fichier excel: ");
                 String path = sc.nextLine();
-                String Path = "C:\\Users\\asus\\Desktop\\Java\\Project\\Design-and-Development-of-a-Notes-Management-Java-Application\\App\\database\\nouveauEtudiant.xlsx";
-                ExcelImport excelImport = new ExcelImport(Path);
-                FilterExcel test = new FilterExcel();
-                test.importStudent(excelImport.readExcel(excelImport.getSheet()));
 
-                boolean checkStatus = true;
-                for(Etudiant newEtudiant : test.getNewStudents()){
+                try{
+                    ExcelImport excelImport = new ExcelImport(path);
+
+                    FilterExcel test = new FilterExcel();
                     try{
-                        studentManager.checkInscriptionEtudiant(newEtudiant);
-                    }catch (BllException blex){
-                        System.err.println(blex.getMessage());
-                        checkStatus = false;
-                        break;
-                    }catch (DataBaseException dbex){
-                        System.err.print(dbex);
-                        checkStatus = false;
-                        break;
+                        test.importStudent(excelImport.readExcel(excelImport.getSheet()));
+                    }catch (ImportException imex){
+                        System.err.print(imex.getMessage());
                     }
-                }
-                for(int i=0;i<test.getOldStudents().size();i+=2){
-                    try{
-                        studentManager.checkReInscriptionEtudiant((Etudiant) test.getOldStudents().get(i),Long.parseLong(String.valueOf(test.getOldStudents().get(i+1))));
-                    }catch (BllException ex){
-                        System.err.println(ex.getMessage());
-                        checkStatus = false;
-                        break;
-                    }catch (DataBaseException dbex){
-                        System.err.print(dbex);
-                        checkStatus = false;
-                        break;
-                    }
-                }
-                if(checkStatus) {
-                    for (Etudiant newEtudiant : test.getNewStudents()) {
+                    StudentManager studentManager = new StudentManager();
+
+                    boolean checkStatus = true;
+                    for(Etudiant newEtudiant : test.getNewStudents()){
                         try{
-                            studentManager.inscriptionEtudiant(newEtudiant);
+                            studentManager.checkInscriptionEtudiant(newEtudiant);
+                        }catch (BllException blex){
+                            System.err.println(blex.getMessage());
+                            checkStatus = false;
+                            break;
                         }catch (DataBaseException dbex){
-                            System.err.print(dbex);
+                            System.err.print(dbex.getMessage());
+                            checkStatus = false;
+                            break;
                         }
                     }
                     for(int i=0;i<test.getOldStudents().size();i+=2){
                         try{
-                            studentManager.reInscriptionEtudiant((Etudiant) test.getOldStudents().get(i),Long.parseLong(String.valueOf(test.getOldStudents().get(i+1))));
+                            studentManager.checkReInscriptionEtudiant((Etudiant) test.getOldStudents().get(i),Long.parseLong(String.valueOf(test.getOldStudents().get(i+1))));
+                        }catch (BllException ex){
+                            System.err.println(ex.getMessage());
+                            checkStatus = false;
+                            break;
                         }catch (DataBaseException dbex){
-                            System.err.print(dbex);
+                            System.err.print(dbex.getMessage());
+                            checkStatus = false;
+                            break;
                         }
                     }
+                    if(checkStatus) {
+                        for (Etudiant newEtudiant : test.getNewStudents()) {
+                            try{
+                                studentManager.inscriptionEtudiant(newEtudiant);
+                            }catch (DataBaseException dbex){
+                                System.err.print(dbex.getMessage());
+                            }
+                        }
+                        for(int i=0;i<test.getOldStudents().size();i+=2){
+                            try{
+                                studentManager.reInscriptionEtudiant((Etudiant) test.getOldStudents().get(i),Long.parseLong(String.valueOf(test.getOldStudents().get(i+1))));
+                            }catch (DataBaseException dbex){
+                                System.err.print(dbex.getMessage());
+                            }
+                        }
+                    }
+                }catch(ImportException ex){
+                    System.err.print(ex.getMessage());
                 }
                 break;
             case 2:
@@ -150,7 +160,16 @@ public class PrincipalProg {
                 break;
             case 3 :
                 //Question sur l'Alias
-                System.out.println("hey");
+                DeliberationManager deliberationManager = new DeliberationManager();
+                String niveauAlias = sc.nextLine();
+                try{
+                    deliberationManager.exportDeliberation(niveauAlias);
+                }catch (BllException blex){
+                    System.err.println(blex.getMessage());
+                }catch (FileNotFoundException fex){
+                    System.err.print(fex.getMessage());
+                }
+
                 break;
             case 4 :
                 System.out.println("Modifier/Supprimer/Créer les éléments, les modules, les classes, et les filières : 1 ");

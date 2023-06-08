@@ -17,7 +17,7 @@ public class InscriptionMatiereDao {
     public void ajouter(long pIdInscription, Element pMatiere) throws DataBaseException {
         try {
             Connection con = DBConnection.getInstance();
-            String sqlInscrLevel = "INSERT INTO inscriptionmatiere(idInscription , idMatiere,coefficient, noteFinale, noteSN, noteSR) VALUES (?,?,?,0,0,0)";
+            String sqlInscrLevel = "INSERT INTO inscriptionmatiere(idInscription , idMatiere,coefficient) VALUES (?,?,?)";
             PreparedStatement stmLvl = con.prepareStatement(sqlInscrLevel);
             stmLvl.setLong(1, pIdInscription);
             stmLvl.setLong(2, pMatiere.getIdMatiere());

@@ -16,7 +16,6 @@ import java.util.List;
 
 public class ExcelDelibExport {
     private static String[] row1 = {"Année\nUniversitaire","Date\ndéliberation"};
-    private static String[] row2 = {"Année Universitaire","Date déliberation"};
     private static String[] row4 = {"ID\nEtudiant","CNE","NOM","PRENOM"};
     private XSSFWorkbook workbook;
     public ExcelDelibExport(String classe,String annee,List<List> pModules,List<List> pStudentInfos) throws IOException {
