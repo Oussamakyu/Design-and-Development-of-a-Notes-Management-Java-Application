@@ -93,7 +93,6 @@ public class DeliberationManager {
                 }
             }
         }
-        System.out.println(dataStudents);
 
         ExcelDelibExport delibExcel = new ExcelDelibExport(pClasseAlias,inscriptionList.get(0).getAnnee()+"/"+(inscriptionList.get(0).getAnnee()+1),modules,finaleDataStudents);
         delibExcel.generate();
