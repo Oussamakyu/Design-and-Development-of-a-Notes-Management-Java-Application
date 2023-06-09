@@ -203,15 +203,14 @@ CREATE TABLE `inscriptionannuelle` (
 CREATE TABLE `inscriptionmatiere` (
   `idInscriptionMatiere` bigint(20) NOT NULL,
   `coefficient` double NOT NULL,
-  `noteFinale` double NOT NULL,
-  `noteSN` double NOT NULL,
-  `noteSR` double NOT NULL,
+  `noteFinale` double DEFAULT -1,
+  `noteSN` double DEFAULT -1,
+  `noteSR` double DEFAULT -1,
   `plusInfos` varchar(255) DEFAULT NULL,
   `validation` varchar(255) DEFAULT NULL,
   `idInscription` bigint(20) DEFAULT NULL,
   `idMatiere` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 -- --------------------------------------------------------
 
 --
@@ -220,9 +219,9 @@ CREATE TABLE `inscriptionmatiere` (
 
 CREATE TABLE `inscriptionmodule` (
   `idInscriptionModule` bigint(20) NOT NULL,
-  `noteFinale` double NOT NULL,
-  `noteSN` double NOT NULL,
-  `noteSR` double NOT NULL,
+  `noteFinale` double DEFAULT -1,
+  `noteSN` double DEFAULT -1,
+  `noteSR` double DEFAULT -1,
   `plusInfos` varchar(255) DEFAULT NULL,
   `validation` varchar(255) DEFAULT NULL,
   `idInscription` bigint(20) DEFAULT NULL,
@@ -636,7 +635,7 @@ ALTER TABLE `coordinatorfiliere`
   ADD CONSTRAINT FOREIGN KEY (`idCoordinator`) REFERENCES `enseignant` (`idEnseighant`);
   
 ALTER TABLE `coordinatorfiliere`  
-  ADD CONSTRAINT FOREIGN KEY (`filiereId`) REFERENCES `filiere` (`idFiliere`);
+  ADD CONSTRAINT FOREIGN KEY (`filiereId`) REFERENCES `filiere`(`idFiliere`);
 
 
 COMMIT;

@@ -54,6 +54,7 @@ public class InscriptionAnnuelleDao {
             while(rs.next()){
                 Etudiant etudiant = new Etudiant();
                 Niveau niveau = new Niveau(pNiveauAlias);
+                niveau.setIdNiveau(rs.getLong(10));
                 etudiant.setIdUtilisateur(rs.getLong(9));
                 InscriptionAnnuelle inscriptionAnn = new InscriptionAnnuelle();
                 inscriptionAnn.setIdInscription(rs.getLong(1));

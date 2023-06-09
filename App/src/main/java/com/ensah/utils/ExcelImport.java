@@ -24,6 +24,7 @@ public class ExcelImport {
             FileInputStream inputStream = new FileInputStream(excelPath);
             XSSFWorkbook workbook= new XSSFWorkbook(inputStream);
             sheet=workbook.getSheetAt(0);
+            inputStream.close();
 
         } catch (IOException e){
             logger.error("Echec de l'importation du fichier Excel. "+e);
@@ -46,32 +47,33 @@ public class ExcelImport {
             List<Object> dataRow = new ArrayList<>();
             for(int c=0;c<cols;c++){
                 Object cellVal;
-                    try{
-                        XSSFCell cell = row.getCell(c);
-                        if (c==0) {
-                            cellVal = (long) cell.getNumericCellValue();
-                        } else if (c==1) {
-                            cellVal = cell.getStringCellValue();
-                        } else if (c==2) {
-                            cellVal =cell.getStringCellValue();
-                        } else if (c==3) {
-                            cellVal =cell.getStringCellValue();
-                        } else if (c==4) {
-                            cellVal =(int) cell.getNumericCellValue();
-                        }
-                        else{
-                            cellVal =cell.getStringCellValue();
-                        }
-                        dataRow.add(cellVal);
-                    } catch (Exception e){
-                        logger.error("Fichier Excel importé inapproprié");
-                        throw new ImportException("Fichier Excel inapproprié");
+                try{
+                    XSSFCell cell = row.getCell(c);
+                    if (c==0) {
+                        cellVal = (long) cell.getNumericCellValue();
+                    } else if (c==1) {
+                        cellVal = cell.getStringCellValue();
+                    } else if (c==2) {
+                        cellVal =cell.getStringCellValue();
+                    } else if (c==3) {
+                        cellVal =cell.getStringCellValue();
+                    } else if (c==4) {
+                        cellVal =(int) cell.getNumericCellValue();
                     }
+                    else{
+                        cellVal =cell.getStringCellValue();
+                    }
+                    dataRow.add(cellVal);
+                } catch (Exception e){
+                    logger.error("Fichier Excel importé inapproprié");
+                    throw new ImportException("Fichier Excel inapproprié");
                 }
-            exportedRows.add(dataRow);
             }
-        return exportedRows;
+            exportedRows.add(dataRow);
         }
+
+        return exportedRows;
+    }
 
     private boolean checkHeaderStruc(XSSFRow row) {
         boolean status = true;

@@ -22,7 +22,7 @@ public class InscriptionModuleDao {
     public void ajouter(long pIdInscription,long pIdModule) throws DataBaseException {
         try{
             Connection con = DBConnection.getInstance();
-            String sqlInscrLevel = "INSERT INTO inscriptionmodule(idInscription , idModule, noteFinale, noteSN, noteSR) VALUES (?,?,0,0,0)";
+            String sqlInscrLevel = "INSERT INTO inscriptionmodule(idInscription , idModule) VALUES (?,?)";
             PreparedStatement stmLvl = con.prepareStatement(sqlInscrLevel);
             stmLvl.setLong(1,pIdInscription);
             stmLvl.setLong(2,pIdModule);

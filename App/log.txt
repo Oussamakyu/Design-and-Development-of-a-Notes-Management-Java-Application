@@ -1,0 +1,149 @@
+2023-05-29 14:11:10,598 ERROR [DBConnection] java.lang.NullPointerException
+2023-05-29 14:11:16,700 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.lang.NullPointerException
+2023-05-29 14:19:01,538 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:19:06,848 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:20:57,538 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:21:06,904 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:22:08,515 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:22:10,455 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-05-29 14:23:26,044 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=6) Unknown database 'tatabase'
+2023-05-29 14:23:28,195 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=6) Unknown database 'tatabase'
+2023-05-29 14:37:53,486 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=22) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:37:57,252 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=22) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:38:22,125 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=31) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:38:24,525 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=31) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:40:02,031 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=32) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:40:04,638 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=32) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:44:04,338 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=33) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 14:44:20,870 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=33) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 17:52:45,218 ERROR [DBConnection] java.sql.SQLNonTransientConnectionException: Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: no further information
+2023-05-29 17:53:57,453 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLNonTransientConnectionException: Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: no further information
+2023-05-29 17:56:18,697 ERROR [DBConnection] java.sql.SQLNonTransientConnectionException: Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: no further information
+2023-05-29 17:56:22,694 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLNonTransientConnectionException: Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: no further information
+2023-05-29 17:57:32,639 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=21) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 17:57:36,021 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=21) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 19:07:28,898 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=23) Unknown database 'tatabase'
+2023-05-29 19:07:31,544 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=23) Unknown database 'tatabase'
+2023-05-29 19:08:08,045 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=25) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 19:08:10,019 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=25) Access denied for user 'root'@'localhost' (using password: YES)
+Current charset is UTF-8. If password has been set using other charset, consider using option 'passwordCharacterEncoding'
+2023-05-29 19:13:24,395 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=27) Unknown database 'tatabase'
+2023-05-29 19:13:35,448 ERROR [DBInstaller] com.ensah.dao.DataBaseException: java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=27) Unknown database 'tatabase'
+2023-05-29 19:15:02,468 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=45) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'START TRANSACTION;
+2023-05-29 21:03:51,286 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=51) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'BEGIN;
+2023-05-29 21:08:48,286 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=53) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'START TRANSACTION;
+2023-05-29 21:09:05,244 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=54) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'START TRANSACTION;
+2023-06-02 11:35:03,194 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: EXCEL_FILE_PATH (Le fichier spécifié est introuvable)
+2023-06-02 11:38:24,617  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-02 11:38:24,618  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-02 11:38:24,660  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-02 11:38:24,661  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-02 11:38:24,696  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-02 11:38:24,696  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-02 11:45:33,859  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-02 11:45:33,860  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-02 11:45:33,904  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-02 11:45:33,905  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-02 11:45:33,938  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-02 11:45:33,939  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-02 11:47:52,596 ERROR [StudentManager] Le niveau de l'étudiant avec l'id 101 est contradictoire avec les resultats de l'année passer.
+2023-06-02 11:48:25,583 ERROR [StudentManager] L'étudiant avec l'id 100 existe déja dans la base de données.
+2023-06-02 11:48:41,640  INFO [StudentManager] Reinscription de l'etudiant avec l'id 100 a étté effectué
+2023-06-02 11:48:41,682  INFO [StudentManager] Reinscription de l'etudiant avec l'id 101 a étté effectué
+2023-06-02 11:48:41,716  INFO [StudentManager] Reinscription de l'etudiant avec l'id 102 a étté effectué
+2023-06-02 12:58:20,263 ERROR [StudentManager] Le niveau de l'étudiant avec l'id 100 est contradictoire avec les resultats de l'année passer.
+2023-06-02 16:25:06,236 ERROR [NiveauDao] java.sql.SQLIntegrityConstraintViolationException: (conn=364) Column 'titre' in field list is ambiguous
+2023-06-02 16:37:01,988  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-02 16:37:01,989  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-02 16:37:02,039  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-02 16:37:02,039  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-02 16:37:02,090  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-02 16:37:02,090  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-02 16:49:00,516 ERROR [StudentManager] L'étudiant avec l'id 100 existe déja dans la base de données.
+2023-06-02 18:09:32,705 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=825) Could not set parameter at position 1 (values was 'CP1')
+Query - conn:825(M)  - "SELECT i.* FROM inscriptionannuelle i, niveau n WHERE i.idNiveau=n.idNiveau AND n.alias='CP1' AND i.annee=(SELECT max(annee) FROM inscriptionannuelle);"
+2023-06-02 18:48:07,699 ERROR [InscriptionModuleDao] java.sql.SQLTransientConnectionException: (conn=1073) Parameter at position 2 is not set
+2023-06-04 09:18:59,671 ERROR [DBConnection] java.sql.SQLInvalidAuthorizationSpecException: Could not connect to address=(host=localhost)(port=3306)(type=master) : GSS-API authentication exception
+2023-06-04 10:58:28,117 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=84) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where idEtudiant=100 and idNiveau=1' at line 1
+2023-06-04 11:02:15,111  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-04 11:02:15,113  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-04 11:02:15,174  INFO [EtudiantDao] l'inscription de l'étudiant  Bennabou a été effectué avec succès 
+2023-06-04 11:02:15,174  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-04 11:02:15,215  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-04 11:02:15,216  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-04 13:20:26,889 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=147) Table 'mydb.admin' doesn't exist
+2023-06-04 15:10:24,132 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=152) Table 'mydb.admin' doesn't exist
+2023-06-04 15:12:11,048 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=153) Table 'mydb.contact' doesn't exist
+2023-06-04 15:13:19,979 ERROR [InscriptionAnnuelleDao] java.sql.SQLSyntaxErrorException: (conn=154) Unknown column 'email' in 'where clause'
+2023-06-05 09:34:57,464 ERROR [StudentManager] L'étudiant avec l'id 100 existe déja dans la base de données.
+2023-06-08 17:52:38,498 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 17:55:39,141 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 17:58:49,727 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 18:05:01,166 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\asus\Desktop\Java\Project\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:05:21,310 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\asus\Desktop\Java\Project\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:05:58,459 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\asus\Desktop\Java\Project\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:06:33,341 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\asus\Desktop\Java\Project\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:06:59,614 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\asus\Desktop\Java\Project\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:08:11,118 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\asus\Desktop\Java\Project\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:08:37,603 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\asus\Desktop\Java\Project\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:09:32,266 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: C:\Users\Housni-Achbouq\Desktop\Design-and-Development-of-a-Notes-Management-Java-Application\App\database\nouveauEtudiant.xlsx (Le chemin d’accès spécifié est introuvable)
+2023-06-08 18:09:48,076 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 18:11:11,413 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 18:11:55,784 ERROR [StudentManager] L'étudiant avec l'id 100 n'existe pas dans la base de données.
+2023-06-08 18:13:41,006 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 18:14:02,096 ERROR [StudentManager] L'étudiant avec l'id 100 n'existe pas dans la base de données.
+2023-06-08 18:14:45,028  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-08 18:14:45,028  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-08 18:14:45,108  INFO [EtudiantDao] l'inscription de l'étudiant  Benabbou a été effectué avec succès 
+2023-06-08 18:14:45,108  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-08 18:14:45,177  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-08 18:14:45,177  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-08 18:51:45,512 ERROR [StudentManager] Le niveau de l'étudiant avec l'id 100 est contradictoire avec les resultats de l'année passer.
+2023-06-08 18:52:29,312  INFO [EtudiantDao] l'inscription de l'étudiant  Yamani a été effectué avec succès 
+2023-06-08 18:52:29,312  INFO [StudentManager] L'etudiant avec l'id 103a été ajouter dans la base de données
+2023-06-08 18:52:29,380  INFO [EtudiantDao] l'inscription de l'étudiant  Ferdous a été effectué avec succès 
+2023-06-08 18:52:29,380  INFO [StudentManager] L'etudiant avec l'id 104a été ajouter dans la base de données
+2023-06-08 18:52:29,449  INFO [EtudiantDao] l'inscription de l'étudiant  Touhami a été effectué avec succès 
+2023-06-08 18:52:29,449  INFO [StudentManager] L'etudiant avec l'id 105a été ajouter dans la base de données
+2023-06-08 18:52:29,508  INFO [StudentManager] Reinscription de l'etudiant avec l'id 100 a été effectué
+2023-06-08 18:52:32,844  INFO [EtudiantDao] l'inscription de l'étudiant  Benabbou a été effectué avec succès 
+2023-06-08 18:52:32,845  INFO [StudentManager] Modification des données de l'etudiant avec l'id 101
+2023-06-08 18:52:32,851  INFO [StudentManager] Reinscription de l'etudiant avec l'id 101 a été effectué
+2023-06-08 18:52:32,917  INFO [StudentManager] Reinscription de l'etudiant avec l'id 102 a été effectué
+2023-06-08 22:06:22,932 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=98) Unknown database 'mydb3'
+2023-06-08 22:09:44,107 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=246) Unknown database 'mydb3'
+2023-06-08 22:13:35,468 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 22:16:40,521 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 22:17:55,352 ERROR [DBConnection] Echec de l'importation du fichier Excel. java.io.FileNotFoundException: <?xml version="1.0" encoding="UTF-8"?> (La syntaxe du nom de fichier, de répertoire ou de volume est incorrecte)
+2023-06-08 22:18:27,101 ERROR [DBConnection] Fichier Excel importé inapproprié
+2023-06-08 22:18:55,786 ERROR [StudentManager] L'étudiant avec l'id 101 n'existe pas dans la base de données.
+2023-06-08 22:19:09,557  INFO [EtudiantDao] l'inscription de l'étudiant  Achbouq a été effectué avec succès 
+2023-06-08 22:19:09,558  INFO [StudentManager] L'etudiant avec l'id 100a été ajouter dans la base de données
+2023-06-08 22:19:09,630  INFO [EtudiantDao] l'inscription de l'étudiant  Benabbou a été effectué avec succès 
+2023-06-08 22:19:09,630  INFO [StudentManager] L'etudiant avec l'id 101a été ajouter dans la base de données
+2023-06-08 22:19:09,690  INFO [EtudiantDao] l'inscription de l'étudiant  Lfelous a été effectué avec succès 
+2023-06-08 22:19:09,691  INFO [StudentManager] L'etudiant avec l'id 102a été ajouter dans la base de données
+2023-06-08 22:26:31,657 ERROR [StudentManager] Le niveau de l'étudiant avec l'id 100 est contradictoire avec les resultats de l'année passer.
+2023-06-08 22:26:54,111 ERROR [StudentManager] L'étudiant avec l'id 103 n'existe pas dans la base de données.
+2023-06-08 22:27:21,039  INFO [EtudiantDao] l'inscription de l'étudiant  Yamani a été effectué avec succès 
+2023-06-08 22:27:21,039  INFO [StudentManager] L'etudiant avec l'id 103a été ajouter dans la base de données
+2023-06-08 22:27:21,091  INFO [EtudiantDao] l'inscription de l'étudiant  Ferdous a été effectué avec succès 
+2023-06-08 22:27:21,091  INFO [StudentManager] L'etudiant avec l'id 104a été ajouter dans la base de données
+2023-06-08 22:27:21,138  INFO [EtudiantDao] l'inscription de l'étudiant  Touhami a été effectué avec succès 
+2023-06-08 22:27:21,138  INFO [StudentManager] L'etudiant avec l'id 105a été ajouter dans la base de données
+2023-06-08 22:27:21,181  INFO [StudentManager] Reinscription de l'etudiant avec l'id 100 a été effectué
+2023-06-08 22:27:40,557  INFO [EtudiantDao] l'inscription de l'étudiant  Benabbou a été effectué avec succès 
+2023-06-08 22:27:40,558  INFO [StudentManager] Modification des données de l'etudiant avec l'id 101
+2023-06-08 22:27:40,564  INFO [StudentManager] Reinscription de l'etudiant avec l'id 101 a été effectué
+2023-06-08 22:27:40,638  INFO [StudentManager] Reinscription de l'etudiant avec l'id 102 a été effectué
