@@ -48,7 +48,7 @@ public class StructureManager {
 
     // Module methods
     public void createModule(Module module) throws BusinessLogicException, DataBaseException {
-        if(moduleDao.findModule(module.getIdModule()) != null)
+        if(moduleDao.findModule(getIdModule(module.getTitre())) != null)
             throw new BusinessLogicException("Module existe déjà  ! ");
         moduleDao.createModule(module);
     }
@@ -66,10 +66,10 @@ public class StructureManager {
     }
 
     // Niveau (Class) methods
-    public void createNiveau(Niveau niveau,long idNextNiveau) throws DataBaseException, BusinessLogicException {
-        if(niveauDao.findNiveauById(niveau.getIdNiveau())!= null)
+    public void createNiveau(Niveau niveau) throws DataBaseException, BusinessLogicException {
+        if(niveauDao.getNiveauIdByAlias(niveau.getAlias())!= null)
             throw new BusinessLogicException("Niveau existe déjà ! ");
-        niveauDao.createNiveau(niveau,idNextNiveau);
+        niveauDao.createNiveau(niveau);
     }
 
     public void updateNiveau(Niveau niveau,long idNextNiveau) throws DataBaseException, BusinessLogicException {
@@ -86,8 +86,6 @@ public class StructureManager {
 
     // Filiere methods
     public void createFiliere(Filiere filiere) throws DataBaseException, BusinessLogicException {
-        if(filiereDao.findFiliere(filiere.getIdFiliere()) != null)
-            throw new BusinessLogicException("Filière existe déjà ! ");
         filiereDao.createFiliere(filiere);
     }
 
@@ -119,6 +117,10 @@ public class StructureManager {
         return false;
     }
 
+    public Module findModule(long moduleId) throws DataBaseException {
+        return findModule(moduleId);
+    }
+
     // Method to associate an element with a module
     public boolean associateElementWithModule(long elementId, long moduleId) throws DataBaseException {
         // Check if the element and module exist
@@ -133,6 +135,30 @@ public class StructureManager {
         }
 
         return false;
+    }
+
+    public Element findElementById(long elementId) throws BusinessLogicException,DataBaseException {
+        Element element = elementDao.findElementById(elementId);
+        if(element==null)
+            throw new BusinessLogicException("Cet élément n'existe pas ");
+        return element;
+    }
+
+    public Niveau findNiveauById(long niveauId) throws DataBaseException {
+        Niveau niveau = niveauDao.findNiveauById(niveauId);
+        return niveau;
+    }
+
+    public void associateElementsToModule(long moduleId, List<Element> elements) throws DataBaseException, BusinessLogicException {
+        List<Element> allElements = elementDao.getAllElements();
+        for (Element j : elements) {
+            for (Element i : allElements) {
+                if ((i.getIdMatiere() ==j.getIdMatiere())& (i.getModule().getIdModule()==moduleId)){
+                    throw new BusinessLogicException("Ce module est déjà associé au élément ayant "+j.getIdMatiere()+" comme id.");
+                }
+            }
+        }
+        elementDao.associateElementsToModule(moduleId,elements);
     }
 
     // Method to associate classes (niveaux) with a filière
@@ -152,6 +178,17 @@ public class StructureManager {
         }
 
         return false;
+    }
+
+    public void associateClassesToFiliere(long filiereId, List<Niveau> niveaux) throws DataBaseException, BusinessLogicException {
+        if(filiereDao.findFiliere(filiereId)==null)
+            throw new BusinessLogicException("Filière n'existe pas ");
+        for(Niveau i : niveaux){
+            if(niveauDao.getFiliereIDByAlias(i.getAlias()) == filiereId){
+                throw new BusinessLogicException("Niveau déjà associé à la filière !");
+            }
+        }
+        niveauDao.associateClassesToFiliere(filiereId,niveaux);
     }
 
     // Method to retrieve modules for a class (niveau)
@@ -176,6 +213,14 @@ public class StructureManager {
         }
 
         return false;
+    }
+
+    public Filiere findFiliere(long filiereId) throws DataBaseException {
+        return filiereDao.findFiliere(filiereId);
+    }
+
+    public List<Module> getModulesByClass(long niveauId) throws DataBaseException {
+        return moduleDao.getModulesByClass(niveauId);
     }
 
     public long getIdModule(String name) throws DataBaseException {

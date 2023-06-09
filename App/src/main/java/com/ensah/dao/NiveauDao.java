@@ -16,6 +16,7 @@ import java.util.List;
 public class NiveauDao {
 
     private Logger logger = Logger.getLogger(NiveauDao.class);
+    private FiliereDao filiereDao = new FiliereDao();
 
     public Niveau getNiveau(long pNiveauId) throws DataBaseException {
         Niveau niveau = null;
@@ -117,16 +118,13 @@ public class NiveauDao {
         return studentsInfos;
     }
 
-    public boolean createNiveau(Niveau niveau,long idNextNiveau) throws DataBaseException {
-        String query = "INSERT INTO niveau (idNiveau, alias, titre, idFiliere, idNextNiveau) VALUES (?, ?, ?, ?, ?)";
+    public boolean createNiveau(Niveau niveau) throws DataBaseException {
+        String query = "INSERT INTO niveau ( alias, titre) VALUES ( ?, ?)";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setLong(1, niveau.getIdNiveau());
-            statement.setString(2, niveau.getAlias());
-            statement.setString(3, niveau.getTitre());
-            statement.setLong(4, niveau.getFiliere().getIdFiliere());
-            statement.setLong(5, idNextNiveau);
+            statement.setString(1, niveau.getAlias());
+            statement.setString(2, niveau.getTitre());
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
         } catch (SQLException e) {
@@ -139,15 +137,14 @@ public class NiveauDao {
 
 
     public boolean updateNiveau(Niveau niveau,long idNextNiveau) throws DataBaseException {
-        String query = "UPDATE niveau SET alias = ?, titre = ?, idFiliere = ?, idNextNiveau = ? WHERE idNiveau = ?";
+        String query = "UPDATE niveau SET alias = ?, titre = ?, idNextNiveau = ? WHERE idNiveau = ?";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, niveau.getAlias());
             statement.setString(2, niveau.getTitre());
-            statement.setLong(3, niveau.getFiliere().getIdFiliere());
-            statement.setLong(4,idNextNiveau);
-            statement.setLong(5, niveau.getIdNiveau());
+            statement.setLong(3,idNextNiveau);
+            statement.setLong(4, niveau.getIdNiveau());
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
         } catch (SQLException e) {
@@ -212,11 +209,14 @@ public class NiveauDao {
 
             for (Niveau niveau : niveaux) {
                 statement.setLong(1, filiereId);
-                statement.setLong(2, niveau.getIdNiveau());
+                statement.setLong(2, getNiveauIdByAlias(niveau.getAlias()));
                 statement.addBatch();
             }
 
             int[] rowsUpdated = statement.executeBatch();
+            for(Niveau i : niveaux){
+                logger.info("La classe "+i.getAlias()+" a été ajouté à la filière "+filiereDao.findFiliere(filiereId).getTitreFiliere());
+            }
             return rowsUpdated.length == niveaux.size();
         } catch (SQLException e) {
             logger.error("Erreur de ", e);
@@ -249,6 +249,25 @@ public class NiveauDao {
         }
     }
 
+    public long getFiliereIDByAlias(String AliasNiveau) throws DataBaseException {
+        String query = "SELECT idFiliere FROM niveau WHERE alias = ?";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, AliasNiveau);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getLong("idFiliere");
+            }
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+        return 0;
+    }
 
 
 

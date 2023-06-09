@@ -61,14 +61,11 @@ public class ModuleDao {
     }
 
     public boolean createModule(Module m) throws DataBaseException {
-        String query = "INSERT INTO module(idModule,code,titre,idNiveau) VALUES (?,?,?,?);";
+        String query = "INSERT INTO module(titre) VALUES (?);";
         try {
             Connection c = DBConnection.getInstance();
             PreparedStatement statement = c.prepareStatement(query);
-            statement.setLong(1,m.getIdModule());
-            statement.setString(2,m.getCode());
-            statement.setString(3,m.getTitre());
-            statement.setLong(4,m.getNiveau().getIdNiveau());
+            statement.setString(1,m.getTitre());
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
         } catch (SQLException e) {
@@ -81,7 +78,7 @@ public class ModuleDao {
     }
 
     public boolean updateModule(Module module) throws DataBaseException {
-        String query = "UPDATE module SET title = ?, code = ? WHERE idModule = ?";
+        String query = "UPDATE module SET titre = ?, code = ? WHERE idModule = ?";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -102,6 +99,8 @@ public class ModuleDao {
 
     public boolean deleteModule(long moduleId) throws DataBaseException {
         String query = "DELETE FROM module WHERE idModule = ?";
+        InscriptionModuleDao inscriptionModuleDao = new InscriptionModuleDao();
+        inscriptionModuleDao.deleteInscModule(moduleId);
         try {
             Connection c = DBConnection.getInstance();
             PreparedStatement statement = c.prepareStatement(query);

@@ -1,0 +1,332 @@
+2023-06-07 10:28:01,237 ERROR [StudentManager] L'étudiant avec l'id 100 existe déja dans la base de données.
+2023-06-07 10:31:20,663 ERROR [StudentManager] L'étudiant avec l'id 100 existe déja dans la base de données.
+2023-06-07 16:20:25,713 ERROR [ModuleDao] Erreur de 
+java.sql.BatchUpdateException: (conn=258) Duplicate entry '2' for key 'PRIMARY'
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:327)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeBatch(ClientSidePreparedStatement.java:299)
+	at com.ensah.dao.ModuleDao.associateModulesToNiveau(ModuleDao.java:188)
+	at com.ensah.bll.StructureManager.associateModuleWithNiveau(StructureManager.java:115)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:176)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: (conn=258) Duplicate entry '2' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:70)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:323)
+	... 4 more
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Duplicate entry '2' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.access$000(AbstractQueryProtocol.java:107)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol$1.handleResultException(AbstractQueryProtocol.java:692)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:141)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:67)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+Caused by: java.sql.SQLException: Duplicate entry '2' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:132)
+	... 5 more
+2023-06-07 16:24:48,549 ERROR [ModuleDao] Erreur de 
+java.sql.BatchUpdateException: (conn=259) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where idModule = 2' at line 1
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:327)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeBatch(ClientSidePreparedStatement.java:299)
+	at com.ensah.dao.ModuleDao.associateModulesToNiveau(ModuleDao.java:188)
+	at com.ensah.bll.StructureManager.associateModuleWithNiveau(StructureManager.java:115)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:176)
+Caused by: java.sql.SQLSyntaxErrorException: (conn=259) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where idModule = 2' at line 1
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:323)
+	... 4 more
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where idModule = 2' at line 1
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.access$000(AbstractQueryProtocol.java:107)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol$1.handleResultException(AbstractQueryProtocol.java:692)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:141)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:67)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+Caused by: java.sql.SQLException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where idModule = 2' at line 1
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:132)
+	... 5 more
+2023-06-07 16:44:14,477 ERROR [ModuleDao] Erreur de 
+java.sql.BatchUpdateException: (conn=312) Duplicate entry '18' for key 'PRIMARY'
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:327)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeBatch(ClientSidePreparedStatement.java:299)
+	at com.ensah.dao.ModuleDao.associateModulesToNiveau(ModuleDao.java:188)
+	at com.ensah.bll.StructureManager.associateModuleWithNiveau(StructureManager.java:115)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:177)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: (conn=312) Duplicate entry '18' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:70)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:323)
+	... 4 more
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Duplicate entry '18' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.access$000(AbstractQueryProtocol.java:107)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol$1.handleResultException(AbstractQueryProtocol.java:692)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:141)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:67)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+Caused by: java.sql.SQLException: Duplicate entry '18' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:132)
+	... 5 more
+2023-06-08 19:15:17,937 ERROR [DBInstaller] java.sql.SQLSyntaxErrorException: (conn=63) You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'START TRANSACTION;
+2023-06-08 19:16:10,519 ERROR [NiveauDao] Erreur de 
+java.sql.BatchUpdateException: (conn=64) Duplicate entry '24' for key 'PRIMARY'
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:327)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeBatch(ClientSidePreparedStatement.java:299)
+	at com.ensah.dao.ElementDao.associateElementsToModule(ElementDao.java:106)
+	at com.ensah.bll.StructureManager.associateElementsToModule(StructureManager.java:159)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:205)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: (conn=64) Duplicate entry '24' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:70)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeBatchExceptionEpilogue(MariaDbStatement.java:323)
+	... 4 more
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Duplicate entry '24' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.access$000(AbstractQueryProtocol.java:107)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol$1.handleResultException(AbstractQueryProtocol.java:692)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:141)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:67)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+Caused by: java.sql.SQLException: Duplicate entry '24' for key 'PRIMARY'
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AsyncMultiRead.call(AsyncMultiRead.java:132)
+	... 5 more
+2023-06-08 19:34:30,406 ERROR [NiveauDao] Erreur de 
+java.sql.SQLSyntaxErrorException: (conn=69) Unknown column 'nomElement' in 'field list'
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeUpdate(ClientSidePreparedStatement.java:181)
+	at com.ensah.dao.ElementDao.createElement(ElementDao.java:25)
+	at com.ensah.bll.StructureManager.createElement(StructureManager.java:31)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:203)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Unknown column 'nomElement' in 'field list'
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Unknown column 'nomElement' in 'field list'
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-08 19:36:15,134 ERROR [NiveauDao] Erreur de 
+java.sql.SQLTransientConnectionException: (conn=78) Field 'currentCoefficient' doesn't have a default value
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:79)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeUpdate(ClientSidePreparedStatement.java:181)
+	at com.ensah.dao.ElementDao.createElement(ElementDao.java:25)
+	at com.ensah.bll.StructureManager.createElement(StructureManager.java:31)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:203)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Field 'currentCoefficient' doesn't have a default value
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Field 'currentCoefficient' doesn't have a default value
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-08 21:29:48,801 ERROR [ModuleDao] Erreur de 
+java.sql.SQLSyntaxErrorException: (conn=183) Unknown column 'idEnseignant' in 'where clause'
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeQuery(ClientSidePreparedStatement.java:163)
+	at com.ensah.dao.CoordinatorFiliereDao.createCoordinatorFiliere(CoordinatorFiliereDao.java:22)
+	at com.ensah.bll.StructureManager.assignCoordinatorToFiliere(StructureManager.java:209)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:250)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Unknown column 'idEnseignant' in 'where clause'
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Unknown column 'idEnseignant' in 'where clause'
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-08 21:30:56,016 ERROR [ModuleDao] Erreur de 
+java.sql.SQLSyntaxErrorException: (conn=192) Unknown column 'idEnseignant' in 'where clause'
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeQuery(ClientSidePreparedStatement.java:163)
+	at com.ensah.dao.CoordinatorFiliereDao.createCoordinatorFiliere(CoordinatorFiliereDao.java:22)
+	at com.ensah.bll.StructureManager.assignCoordinatorToFiliere(StructureManager.java:209)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:250)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Unknown column 'idEnseignant' in 'where clause'
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Unknown column 'idEnseignant' in 'where clause'
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-08 21:31:55,827 ERROR [ModuleDao] Erreur de 
+java.sql.SQLSyntaxErrorException: (conn=193) Table 'mydb.coordinator_filiere' doesn't exist
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeUpdate(ClientSidePreparedStatement.java:181)
+	at com.ensah.dao.CoordinatorFiliereDao.createCoordinatorFiliere(CoordinatorFiliereDao.java:43)
+	at com.ensah.bll.StructureManager.assignCoordinatorToFiliere(StructureManager.java:209)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:250)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Table 'mydb.coordinator_filiere' doesn't exist
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Table 'mydb.coordinator_filiere' doesn't exist
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-08 21:46:24,377  INFO [NiveauDao] La classe CP1 a été ajouté à la filière Cycle Préparatoire
+2023-06-09 00:46:19,339 ERROR [NiveauDao] Erreur de 
+java.sql.SQLTransientConnectionException: (conn=267) Parameter at position 4 is not set
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:79)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:184)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:195)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeUpdate(ClientSidePreparedStatement.java:181)
+	at com.ensah.dao.ElementDao.updateElement(ElementDao.java:44)
+	at com.ensah.bll.StructureManager.updateElement(StructureManager.java:38)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:216)
+2023-06-09 00:48:00,934 ERROR [NiveauDao] Erreur de 
+java.sql.SQLIntegrityConstraintViolationException: (conn=272) Cannot add or update a child row: a foreign key constraint fails (`mydb`.`element`, CONSTRAINT `FKpy7uud3qt1x365dnkff4f41l8` FOREIGN KEY (`idModule`) REFERENCES `module` (`idModule`))
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:70)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeUpdate(ClientSidePreparedStatement.java:181)
+	at com.ensah.dao.ElementDao.updateElement(ElementDao.java:44)
+	at com.ensah.bll.StructureManager.updateElement(StructureManager.java:38)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:216)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Cannot add or update a child row: a foreign key constraint fails (`mydb`.`element`, CONSTRAINT `FKpy7uud3qt1x365dnkff4f41l8` FOREIGN KEY (`idModule`) REFERENCES `module` (`idModule`))
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Cannot add or update a child row: a foreign key constraint fails (`mydb`.`element`, CONSTRAINT `FKpy7uud3qt1x365dnkff4f41l8` FOREIGN KEY (`idModule`) REFERENCES `module` (`idModule`))
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-09 01:00:28,095 ERROR [ModuleDao] Erreur de 
+java.sql.SQLSyntaxErrorException: (conn=302) Unknown column 'title' in 'field list'
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeUpdate(ClientSidePreparedStatement.java:181)
+	at com.ensah.dao.ModuleDao.updateModule(ModuleDao.java:88)
+	at com.ensah.bll.StructureManager.updateModule(StructureManager.java:59)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:258)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Unknown column 'title' in 'field list'
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Unknown column 'title' in 'field list'
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-09 01:04:23,319 ERROR [ModuleDao] Erreur de 
+java.sql.SQLIntegrityConstraintViolationException: (conn=304) Cannot delete or update a parent row: a foreign key constraint fails (`mydb`.`inscriptionmodule`, CONSTRAINT `FKsfog581rh033dgomu0u7xywgd` FOREIGN KEY (`idModule`) REFERENCES `module` (`idModule`))
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:70)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:158)
+	at org.mariadb.jdbc.MariaDbStatement.executeExceptionEpilogue(MariaDbStatement.java:266)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:229)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.execute(ClientSidePreparedStatement.java:149)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeUpdate(ClientSidePreparedStatement.java:181)
+	at com.ensah.dao.ModuleDao.deleteModule(ModuleDao.java:106)
+	at com.ensah.bll.StructureManager.deleteModule(StructureManager.java:65)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:264)
+Caused by: org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException: Cannot delete or update a parent row: a foreign key constraint fails (`mydb`.`inscriptionmodule`, CONSTRAINT `FKsfog581rh033dgomu0u7xywgd` FOREIGN KEY (`idModule`) REFERENCES `module` (`idModule`))
+	at org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException.of(MariaDbSqlException.java:34)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:194)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.exceptionWithQuery(AbstractQueryProtocol.java:177)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:321)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.executeInternal(ClientSidePreparedStatement.java:220)
+	... 5 more
+Caused by: java.sql.SQLException: Cannot delete or update a parent row: a foreign key constraint fails (`mydb`.`inscriptionmodule`, CONSTRAINT `FKsfog581rh033dgomu0u7xywgd` FOREIGN KEY (`idModule`) REFERENCES `module` (`idModule`))
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readErrorPacket(AbstractQueryProtocol.java:1694)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.readPacket(AbstractQueryProtocol.java:1556)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.getResult(AbstractQueryProtocol.java:1519)
+	at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executeQuery(AbstractQueryProtocol.java:318)
+	... 6 more
+2023-06-09 01:12:26,309 ERROR [NiveauDao] Erreur de 
+java.sql.SQLSyntaxErrorException: (conn=315) Could not set parameter at position 5 (values was 28)
+Query - conn:315(M)  - "UPDATE niveau SET alias = ?, titre = ?, idNextNiveau = ? WHERE idNiveau = ?"
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at org.mariadb.jdbc.internal.util.exceptions.ExceptionFactory.create(ExceptionFactory.java:176)
+	at org.mariadb.jdbc.ClientSidePreparedStatement.setParameter(ClientSidePreparedStatement.java:480)
+	at org.mariadb.jdbc.BasePrepareStatement.setLong(BasePrepareStatement.java:1435)
+	at com.ensah.dao.NiveauDao.updateNiveau(NiveauDao.java:147)
+	at com.ensah.bll.StructureManager.updateNiveau(StructureManager.java:78)
+	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:303)

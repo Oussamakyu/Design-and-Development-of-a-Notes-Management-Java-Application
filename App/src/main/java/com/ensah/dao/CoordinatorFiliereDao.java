@@ -14,7 +14,7 @@ public class CoordinatorFiliereDao {
     private Logger logger = Logger.getLogger(ModuleDao.class);
     public boolean createCoordinatorFiliere(long coordinatorId, long filiereId) throws DataBaseException {
         // Check if the coordinatorId exists in the enseignant table
-        String checkQuery = "SELECT COUNT(*) FROM enseignant WHERE idEnseignant = ?";
+        String checkQuery = "SELECT COUNT(*) FROM enseignant WHERE idEnseighant = ?";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
@@ -34,7 +34,7 @@ public class CoordinatorFiliereDao {
         }
 
         // Proceed with creating the record in coordinator_filiere table
-        String insertQuery = "INSERT INTO coordinator_filiere (idCoordinator, filiereId) VALUES (?, ?)";
+        String insertQuery = "INSERT INTO coordinatorfiliere (idCoordinator, filiereId) VALUES (?, ?)";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(insertQuery);
@@ -53,7 +53,7 @@ public class CoordinatorFiliereDao {
 
 
     public boolean deleteCoordinatorFiliere(long coordinatorId, long filiereId) throws DataBaseException {
-        String query = "DELETE FROM coordinator_filiere WHERE idCoordinator = ? AND filiereId = ?";
+        String query = "DELETE FROM coordinatorfiliere WHERE idCoordinator = ? AND filiereId = ?";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
@@ -72,7 +72,7 @@ public class CoordinatorFiliereDao {
 
     public List<Filiere> getFilieresForCoordinator(long coordinatorId) throws DataBaseException {
         List<Filiere> filieres = new ArrayList<>();
-        String query = "SELECT f.* FROM filiere f JOIN coordinator_filiere cf ON f.idFiliere = cf.filiereId WHERE cf.idCoordinator = ?";
+        String query = "SELECT f.* FROM filiere f JOIN coordinatorfiliere cf ON f.idFiliere = cf.filiereId WHERE cf.idCoordinator = ?";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);

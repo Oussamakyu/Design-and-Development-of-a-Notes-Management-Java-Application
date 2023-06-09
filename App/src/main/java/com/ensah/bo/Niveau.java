@@ -32,6 +32,10 @@ public class Niveau {
 		this.alias = pNiveauAlias;
 	}
 
+	public Niveau(String alias, String titre) {
+		this.alias = alias;
+		this.titre = titre;
+	}
 
 	public Niveau(Long idNiveau) {
 		this.idNiveau = idNiveau;
@@ -43,8 +47,7 @@ public class Niveau {
 		this.titre = titre;
 	}
 
-
-    public Long getIdNiveau() {
+	public Long getIdNiveau() {
 		return idNiveau;
 	}
 
@@ -104,6 +107,9 @@ public class Niveau {
 		modules.add(m);
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "alias du niveau :'" + alias + '\'' +
+				'}';
+	}
 }

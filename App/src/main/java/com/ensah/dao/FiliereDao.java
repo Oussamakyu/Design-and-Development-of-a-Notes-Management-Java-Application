@@ -13,15 +13,14 @@ import java.util.List;
 public class FiliereDao {
     private Logger logger = Logger.getLogger(NiveauDao.class);
     public boolean createFiliere(Filiere filiere) throws DataBaseException {
-        String query = "INSERT INTO filiere (idFiliere,anneeFinaccreditation,anneeaccreditation,codeFiliere,titreFiliere) VALUES (?,?,?,?,?);";
+        String query = "INSERT INTO filiere (anneeFinaccreditation,anneeaccreditation,codeFiliere,titreFiliere) VALUES (?,?,?,?);";
         try {
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setLong(1, filiere.getIdFiliere());
-            statement.setInt(2, filiere.getAnneeFinaccreditation());
-            statement.setInt(3,filiere.getAnneeaccreditation());
-            statement.setString(4,filiere.getCodeFiliere());
-            statement.setString(5,filiere.getTitreFiliere());
+            statement.setInt(1, filiere.getAnneeFinaccreditation());
+            statement.setInt(2,filiere.getAnneeaccreditation());
+            statement.setString(3,filiere.getCodeFiliere());
+            statement.setString(4,filiere.getTitreFiliere());
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
         } catch (SQLException e) {

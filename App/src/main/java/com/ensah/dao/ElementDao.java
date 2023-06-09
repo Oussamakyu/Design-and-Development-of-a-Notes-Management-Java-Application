@@ -17,11 +17,12 @@ public class ElementDao {
 
 
     public boolean createElement(Element element) throws DataBaseException {
-        String query = "INSERT INTO element (idMatiere, idModule) VALUES (?, ?);";
+        String query = "INSERT INTO element (nom,currentCoefficient) VALUES (?,?);";
         try {
+            Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setLong(1, element.getIdMatiere());
-            statement.setLong(2, element.getModule().getIdModule());
+            statement.setString(1, element.getNom());
+            statement.setLong(2,1);
             int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
         } catch (SQLException e) {
@@ -31,14 +32,14 @@ public class ElementDao {
     }
 
     public boolean updateElement(Element element) throws DataBaseException {
-        String query = "UPDATE element SET  code=?, currentCoefficient=? ,nom=?,idModule = ? WHERE idMatiere = ?;";
+        String query = "UPDATE element SET  code=?, currentCoefficient=? ,nom=? WHERE idMatiere = ?;";
         try {
+            Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1,element.getCode());
             statement.setDouble(2,element.getCurrentCoefficient());
             statement.setString(3,element.getNom());
-            statement.setLong(1, element.getModule().getIdModule());
-            statement.setLong(2, element.getIdMatiere());
+            statement.setLong(4, element.getIdMatiere());
             int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
         } catch (SQLException e) {
@@ -50,6 +51,7 @@ public class ElementDao {
     public boolean deleteElement(long matiereId) throws DataBaseException {
         String query = "DELETE FROM element WHERE idMatiere = ?;";
         try {
+            Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, matiereId);
             int rowsDeleted = statement.executeUpdate();
@@ -64,6 +66,7 @@ public class ElementDao {
         List<Element> elements = new ArrayList<>();
         String query = "SELECT * FROM element;";
         try {
+            Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -85,17 +88,19 @@ public class ElementDao {
     }
 
     public boolean associateElementsToModule(long moduleId, List<Element> elements) throws DataBaseException {
-        String query = "INSERT INTO element (idMatiere, code, currentCoefficient, nom, idModule) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO element ( code, currentCoefficient, nom, idModule) VALUES (?, ?, ?, ?)";
         try {
+            double x = 1;
             Connection connection = DBConnection.getInstance();
             PreparedStatement statement = connection.prepareStatement(query);
-
+            if(elements.size()==2){
+                x=0.5;
+            }
             for (Element element : elements) {
-                statement.setLong(1, element.getIdMatiere());
-                statement.setString(2, element.getCode());
-                statement.setDouble(3, element.getCurrentCoefficient());
-                statement.setString(4, element.getNom());
-                statement.setLong(5, moduleId);
+                statement.setString(1, null);
+                statement.setDouble(2, x);
+                statement.setString(3, element.getNom());
+                statement.setLong(4, moduleId);
                 statement.addBatch();
             }
 

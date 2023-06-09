@@ -44,7 +44,11 @@ public class Filiere {
 		this.anneeFinaccreditation = anneeFinaccreditation;
 	}
 
-	public Long getIdFiliere() {
+    public Filiere() {
+
+    }
+
+    public Long getIdFiliere() {
 		return idFiliere;
 	}
 

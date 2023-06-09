@@ -86,4 +86,21 @@ public class InscriptionModuleDao {
         return nvModules;
     }
 
+    public boolean deleteInscModule(long idModule) throws DataBaseException {
+        String query = "DELETE FROM inscriptionmodule WHERE idModule = ?";
+        try {
+            Connection c = DBConnection.getInstance();
+            PreparedStatement statement = c.prepareStatement(query);
+            statement.setLong(1, idModule);
+            int rowsDeleted = statement.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
 }

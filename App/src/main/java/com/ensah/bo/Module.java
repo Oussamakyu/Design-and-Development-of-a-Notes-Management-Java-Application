@@ -29,6 +29,16 @@ public class Module {
 		this.niveau = niveau;
 	}
 
+	public Module(Long idModule, String titre, String code) {
+		this.idModule = idModule;
+		this.titre = titre;
+		this.code = code;
+	}
+
+	public Module(String titre) {
+		this.titre = titre;
+	}
+
 	public Long getIdModule() {
 		return idModule;
 	}
@@ -77,11 +87,11 @@ public class Module {
 	@Override
 	public String toString() {
 		return "Module{" +
-				"idModule=" + idModule +
-				", titre='" + titre + '\'' +
-				", code='" + code + '\'' +
-				", elements=" + elements +
-				", niveau=" + niveau +
+				"idModule :" + idModule +
+				", code :'" + titre + '\'' +
+				", titre :" + code + '\'' +
+				", elements :" + elements +
+				", niveau : " + niveau.getIdNiveau() +
 				'}';
 	}
 }
