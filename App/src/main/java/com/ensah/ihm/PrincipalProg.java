@@ -5,6 +5,7 @@ import com.ensah.bo.*;
 import com.ensah.bo.Module;
 import com.ensah.dao.CadreAdministrateurDao;
 import com.ensah.dao.DataBaseException;
+import com.ensah.utils.ConsoleColors;
 import com.ensah.utils.ExcelImport;
 import com.ensah.utils.FilterExcel;
 import dnl.utils.text.table.TextTable;
@@ -26,17 +27,17 @@ public class PrincipalProg {
          * Affiche le menu de l'application
          */
 
-        System.out.println("Inscription/Reinscription des étudiants	:              1 ");
+        System.out.println(ConsoleColors.YELLOW+"Inscription/Reinscription des étudiants	:              1 ");
         System.out.println("Ajouter des délibérations depuis le fichier excel :    2 ");
         System.out.println("Exporter le fichier des délibérations :                3 ");
         System.out.println("Gérer la structure et les éléments pédagogiques :      4 ");
         System.out.println("Gestion des modifications, Recherche et Consultation : 5  ");
-        System.out.println("0-	Sortir ");
+        System.out.println("0-	Sortir "+ConsoleColors.RESET);
     }
 
     public static void main(String[] args) throws BusinessLogicException, DataBaseException, ImportException, IOException {
         StructureManager structureManager = new StructureManager();
-        String logo = "\n" +
+        String logo = "\n" + ConsoleColors.PURPLE_BOLD_BRIGHT+
                 " ___           _   _         _                \n" +
                 "(  _`\\        ( ) ( )       ( )_              \n" +
                 "| (_(_)______ | `\\| |   _   | ,_)   __    ___ \n" +
@@ -44,7 +45,7 @@ public class PrincipalProg {
                 "| (_( )       | |`\\ |( (_) )| |_ (  ___/\\__, \\\n" +
                 "(____/'       (_) (_)`\\___/'`\\__)`\\____)(____/\n" +
                 "                                              \n" +
-                "                                              \n";
+                "                                              \n"+ConsoleColors.RESET;
         System.out.println(logo);
         //création des instances de la classe qui gèrent la logique métier
         NotesManager notesManager = new NotesManager();
@@ -72,9 +73,9 @@ public class PrincipalProg {
         boolean connect = false;
         boolean sw2 = true;
         while(!connect) {
-            System.out.println("Entrer votre login : ");
+            System.out.println(ConsoleColors.CYAN_BOLD+"Entrer votre login : ");
             String login = sc.nextLine();
-            System.out.println("Entrer votre mot de passe : ");
+            System.out.println("Entrer votre mot de passe : "+ConsoleColors.RESET);
             String password = sc.nextLine();
             AdminsManager admMan = new AdminsManager();
             connect = admMan.connectAdmin(login, password);
@@ -86,7 +87,7 @@ public class PrincipalProg {
             //afficher le menu
             printMenu();
             //lire le choix
-            System.out.println("Saisir le numéro de votre choix: ");
+            System.out.println(ConsoleColors.PURPLE+"Saisir le numéro de votre choix: ");
             int choix = sc.nextInt();
             sc.nextLine();
 
