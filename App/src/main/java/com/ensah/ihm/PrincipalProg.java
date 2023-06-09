@@ -91,7 +91,7 @@ public class PrincipalProg {
 
         switch (choix) {
             case 1:
-                System.out.println("Entrer le chemain du fichier excel: ");
+                System.out.println("Entrer le chemin du fichier excel: ");
                 String path = sc.nextLine();
 
                 try{
