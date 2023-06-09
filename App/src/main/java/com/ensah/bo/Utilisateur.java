@@ -25,6 +25,13 @@ public class Utilisateur {
 
 	private Set<Compte> comptes;
 
+
+	public Utilisateur(Long idUtilisateur, String nom, String prenom) {
+		this.idUtilisateur = idUtilisateur;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
 	public Utilisateur(Long idUtilisateur, String cin, String email, String nom, String nomArabe, String photo, String prenom, String prenomArabe, String telephone) {
 		this.idUtilisateur = idUtilisateur;
 		this.nom = nom;

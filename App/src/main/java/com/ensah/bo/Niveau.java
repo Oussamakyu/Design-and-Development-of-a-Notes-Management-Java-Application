@@ -47,6 +47,10 @@ public class Niveau {
 		this.titre = titre;
 	}
 
+    public Niveau() {
+
+    }
+
 	public Long getIdNiveau() {
 		return idNiveau;
 	}

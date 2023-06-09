@@ -97,5 +97,32 @@ public class FiliereDao {
         }
     }
 
+    public List<Filiere> getAllFiliere() throws DataBaseException {
+        String query = "SELECT * FROM filiere ";
+        try {
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            List<Filiere> fls=new ArrayList<>();
+            while (resultSet.next()) {
+                long filiereId = resultSet.getLong("idFiliere");
+                int anneeFinAccreditation = resultSet.getInt("anneeFinaccreditation");
+                int anneeAccreditation = resultSet.getInt("anneeaccreditation");
+                String codeFiliere = resultSet.getString("codeFiliere");
+                String titreFiliere = resultSet.getString("titreFiliere");
+                Filiere filiere = new Filiere(filiereId, titreFiliere, codeFiliere, anneeAccreditation, anneeFinAccreditation);
+                filiere.setIdFiliere(filiereId);
+                fls.add(filiere);
+            }
+            return fls;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
 }
 

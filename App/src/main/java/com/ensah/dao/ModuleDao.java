@@ -255,7 +255,7 @@ public class ModuleDao {
                     }
                 }}
         } catch (SQLException e) {
-            throw new DataBaseException("Failed to retrieve module from the database", e);
+            throw new DataBaseException(e);
         }
         return null;
     }
@@ -278,7 +278,7 @@ public class ModuleDao {
                 modules.add(module);
             }
         } catch (SQLException e) {
-            throw new DataBaseException("Error retrieving modules by niveau name.", e);
+            throw new DataBaseException( e);
         }
 
         return modules;

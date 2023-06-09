@@ -330,3 +330,5 @@ Query - conn:315(M)  - "UPDATE niveau SET alias = ?, titre = ?, idNextNiveau = ?
 	at com.ensah.dao.NiveauDao.updateNiveau(NiveauDao.java:147)
 	at com.ensah.bll.StructureManager.updateNiveau(StructureManager.java:78)
 	at com.ensah.ihm.PrincipalProg.main(PrincipalProg.java:303)
+2023-06-09 02:06:12,912 ERROR [DBConnection] java.sql.SQLSyntaxErrorException: Could not connect to address=(host=localhost)(port=3306)(type=master) : (conn=362) Unknown database 'mydb3'
+2023-06-09 03:09:10,613  INFO [NiveauDao] La classe IF a été ajouté à la filière Ingénierie des données

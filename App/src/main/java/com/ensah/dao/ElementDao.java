@@ -171,7 +171,7 @@ public class ElementDao {
                     }
                 }}
         } catch (SQLException e) {
-            throw new DataBaseException("Failed to retrieve elements from the database", e);
+            throw new DataBaseException(e);
         }
         return elements;
     }
@@ -375,5 +375,5 @@ public class ElementDao {
 
 
 
-}
+
 

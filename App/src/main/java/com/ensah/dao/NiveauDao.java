@@ -201,6 +201,32 @@ public class NiveauDao {
         }
     }
 
+    public List<Niveau> getAllLevels() throws DataBaseException {
+        String query = "SELECT * FROM niveau ";
+        try {
+            List<Niveau> nveaux = new ArrayList<>();
+            Connection connection = DBConnection.getInstance();
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                long idNiveau = resultSet.getLong("idNiveau");
+                String alias = resultSet.getString("alias");
+                String titre = resultSet.getString("titre");
+                long idFiliere = resultSet.getLong("idFiliere");
+                long idNextNiveau = resultSet.getLong("idNextNiveau");
+                nveaux.add(new Niveau(idNiveau, alias, titre, new Filiere(idFiliere),idNextNiveau)) ;
+            }
+            return nveaux;
+        } catch (SQLException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        } catch (DataBaseException e) {
+            logger.error("Erreur de ", e);
+            throw new DataBaseException(e);
+        }
+    }
+
     public boolean associateClassesToFiliere(long filiereId, List<Niveau> niveaux) throws DataBaseException {
         String query = "UPDATE niveau SET idFiliere = ? WHERE idNiveau = ?";
         try {
@@ -281,7 +307,7 @@ public class NiveauDao {
                     }
                 }}
         } catch (SQLException e) {
-            throw new DataBaseException("Failed to retrieve alias from the database", e);
+            throw new DataBaseException( e);
         }
         return alias;
     }
@@ -299,6 +325,6 @@ public class NiveauDao {
 
 
 
-}
+
 
 

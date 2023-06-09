@@ -161,6 +161,18 @@ public class StructureManager {
         elementDao.associateElementsToModule(moduleId,elements);
     }
 
+    public List<Element> getAllElements() throws DataBaseException {
+        return elementDao.getAllElements();
+    }
+
+    public List<Niveau> getAllLevels() throws DataBaseException {
+        return niveauDao.getAllLevels();
+    }
+
+    public List<Filiere> getAllFiliere() throws DataBaseException {
+        return filiereDao.getAllFiliere();
+    }
+
     // Method to associate classes (niveaux) with a filière
     public boolean associateNiveauxWithFiliere(List<Long> niveauIds, long filiereId) throws DataBaseException {
         // Check if the filière and niveaux exist
@@ -232,7 +244,9 @@ public class StructureManager {
         return 0;
     }
 
-    public long getIdNiveau(String alias) throws DataBaseException {
+    public long getIdNiveau(String alias) throws DataBaseException, BusinessLogicException {
+        if(niveauDao.getNiveauIdByAlias(alias)==null)
+            throw new BusinessLogicException("Pas de niveaux portant ce Alias");
         return niveauDao.getNiveauIdByAlias(alias);
     }
 

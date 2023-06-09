@@ -86,19 +86,19 @@ public class UtilisateurDao {
                     }
                 }}
         } catch (SQLException e) {
-            throw new DataBaseException("Failed to retrieve alias from the database", e);
+            throw new DataBaseException( e);
         }
         return alias;
     }
 
-    private Niveau createNiveauFromResultSet(ResultSet resultSet) throws SQLException {
-        Niveau niveau = new Niveau();
-        niveau.setIdNiveau(resultSet.getLong("idNiveau"));
-        niveau.setAlias(resultSet.getString("alias"));
-        niveau.setTitre(resultSet.getString("titre"));
-        return niveau;
-    }
-}
+//    private Niveau createNiveauFromResultSet(ResultSet resultSet) throws SQLException {
+//        Niveau niveau = new Niveau();
+//        niveau.setIdNiveau(resultSet.getLong("idNiveau"));
+//        niveau.setAlias(resultSet.getString("alias"));
+//        niveau.setTitre(resultSet.getString("titre"));
+//        return niveau;
+//    }
+//}
 
     public Utilisateur resultToUtilisateur(ResultSet rs) throws SQLException {
         Utilisateur utilisateur = new Utilisateur();
